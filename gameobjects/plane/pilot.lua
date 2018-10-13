@@ -24,7 +24,7 @@ function Player:new(index)
     }
 
     self.health = 5
-    player.active = true
+    self.active = true
 	self.circle = self:add_component(Component.get('circle')(self, 5, 3))
 	self.bullet_count = 0
 
@@ -33,6 +33,8 @@ end
 --Calculates damage. Returns false when the pilot is destroyed
 function Player:damage(damage)
 	health = health - damage
+	if health <= 0 then
+		active = false
 end 
 
 function Player:shoot()
@@ -51,7 +53,7 @@ end
 function Player:update(dt)
 	self.input:update()
 	
-	if health <= 0 then
+	if self.active == false then
 		local o = Direcor.current:add_gameobject(Explosion())
 		o.x = self.x
 		o.y = self.y
