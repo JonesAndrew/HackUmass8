@@ -61,10 +61,11 @@ function Player:update(dt)
 		return true
 	end
 
-	local x, y = self.input:get() 'move'
+	local x, y = self.input:get('move')
 	self.vel_x = x * 60
 	self.vel_y = y * 60
-	if input:pressed 'shoot' then
+
+	if input:pressed('shoot') then
 		Player:shoot()
 		--shoot function
 	end
