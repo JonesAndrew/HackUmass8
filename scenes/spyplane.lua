@@ -43,10 +43,10 @@ function Spylane:update(dt)
 
 	--collision detection, damage
 	for i,v in ipairs(bullets) do
-		if dist(v.x, v.y, p1.x, p1.y) < 10
+		if dist(v.x, v.y, p1.x, p1.y) < 10 then
 			p1:damage()
 			v.collided = true
-		elseif dist(v.x, v.y, p1.x, p2.y) < 10
+		elseif dist(v.x, v.y, p1.x, p2.y) < 10 then
 			p2:damage()
 			v.collided = true
 		end
