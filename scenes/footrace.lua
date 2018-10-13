@@ -31,7 +31,7 @@ function Footrace:new()
     go.y = 220
 
     local title = Gameobject.get('basic')()
-    self.button_label = title:add_component(Component.get('label')(title, 'a'))
+    self.button_label = title:add_component(Component.get('labelbig')(title, 'a'))
     title.x = 240
     self:add_gameobject(title)
 
@@ -41,7 +41,7 @@ end
 function Footrace:random_button()
    local buttons = {'a', 'b', 'x', 'y', 'STOP'}
    self.button = buttons[love.math.random(5)]
-   self.button_label.text = self.button
+   self.button_label.text = string.upper(self.button)
 end
 
 function Footrace:update(dt)
@@ -49,7 +49,7 @@ function Footrace:update(dt)
 
     self.countdown = self.countdown - dt
     if self.countdown < 0 then
-        self.countdown = love.math.random() + 2.5
+        self.countdown = love.math.random()*2 + 1.5
         self:random_button()
     end
 end
