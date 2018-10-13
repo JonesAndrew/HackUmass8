@@ -28,14 +28,14 @@ function Player:new(index)
     else
         self.input = baton.new {
           controls = {
-            left = {},
-            right = {},
-            up = {},
-            down = {},
-            a = {},
-            b = {},
-            c = {},
-            d = {},
+            left = {'axis:leftx-', 'button:dpleft'},
+            right = {'axis:leftx+', 'button:dpright'},
+            up = {'axis:lefty-', 'button:dpup'},
+            down = {'axis:lefty+', 'button:dpdown'},
+            a = {'button:a'},
+            b = {'button:a'},
+            c = {'button:a'},
+            d = {'button:a'},
           },
           pairs = {
             move = {'left', 'right', 'up', 'down'}
