@@ -1,0 +1,50 @@
+Minigame Ideas
+
+
+1. "Fortnite: Boop Royale" (FFA) - On an ever-shrinking circular stage, players
+have to push other players off. Players can charge, with the caveat that the 
+boost cannot be corrected after firing.
+Last player wins.
+
+2. "Strobe Mashing" (FFA) - Players have to button mash to match the prompt on 
+screen. Prompts change suddenly and at random. The objective is to move from 
+one side of the screen to the other. Incorrect mashes move you backwards, 
+correct mashes move you forwards. 
+
+3. "Speed Checkers" (2v2) - Players are delegated into teams, and every turn 
+teams are scrambled. The objective is to beat the other team in a scaled-down 
+version of checkers.
+
+4. "Drip Drop" (FFA) - Players must rotate a circular stage to guide paint to 
+the center. The stage is randomly generated.
+
+5. "Death Tetris" (1v3) - One player must drop blocks, similar to tetris. The 
+other players have to scale the blocks in order to make it to the goal, which is
+located on the top of the screen. 
+
+6. "Bullet Heaven" (2v2) - Players are split into two teams, each comprised of a
+runner and a gunner. The runner has to survive, while the gunner has to fire a 
+minimum amount of bullets. If the runner dies or the gunner does not meet the 
+bullet quota, the team loses. In case of a tie, they go into overtime and IT 
+GETS FASTER
+
+7. "Russian Roulette 2" (FFA) - Players are given a gun and have to choose 
+whether to fire or to pass. Firing runs the risk of dying, but awards the player
+a point. Most points after 3 rounds wins.
+
+8. "Spinner" (1v3) - 3 players have to navigate an obstacle course comprised of 
+spinning platforms. The platforms are different sizes, and spin at different 
+rates. The fourth player controls the generalized speed of the entire obstacle 
+course. If at least one player survives before time runs out, the 3 players win.
+
+9. "Mixing" (2v2) - Players are split into teams and given 4 poisons labeled 
+X, XX, XXX, XXXX, one of each. Each poison has a randomized amount of poison, 
+but the property X < XX < XXX < XXXX will always hold. The players must continue
+to pour poision into the vial until it explodes (The vial can hold an 
+unspecified amount of poison). First team to explode loses. 
+
+10. "Target Sway" (2v2) - All players are delegated into teams of 2. One player 
+on each team controls the direction of a swaying target. The other player 
+controls a reticle that is also swaying. The player with the gun has to choose 
+when to shoot (there is a 0.75 second delay on the shot). The team with the 
+better score wins.
