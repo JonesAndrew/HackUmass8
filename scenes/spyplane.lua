@@ -1,4 +1,4 @@
-local Scene = require "scene/scene"
+local Scene = require "scenes/scene"
 local pilot = require "gameobjects/plane/pilot"
 local Gameobject = require "gameobjects/index"
 local Compoonent = require "components/index"
