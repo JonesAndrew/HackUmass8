@@ -15,6 +15,8 @@ function Gameobject:new()
     self.components = {}
     self.x = 0
     self.y = 0
+    self.del_x = 0
+    self.del_y = 0
 end
 
 function Gameobject:update(dt)

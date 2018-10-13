@@ -1,14 +1,16 @@
 local Component = require "components/index"
 
-local Shape = Component.Component:extend()
-Component.add("shape", Shape)
+local Sway = Component.Component:extend()
+Component.add("sway", Sway)
 
-function Shape:new(gameobject, radius)
+function Sway:new(gameobject, position)
     Component.Component.new(self, gameobject)
 
-    self.radius = radius
+    self.position = {gameobject.x, gameobject.y}
+    self.destination = {(gameobject.x + love.math.random(-48,48)), (gameobject.y + love.math.random(-27,27))}
+    self.jitter = {-position[2] * random(-1,1), position[1] * random(-1,1)}
 end
 
-function Shape:render()
-    love.graphics.rectangle("line", self.gameobject.x-self.radius, self.gameobject.y-self.radius, self.radius*2, self.radius*2)
-end
+function Sway:update(dt)
+	
+
