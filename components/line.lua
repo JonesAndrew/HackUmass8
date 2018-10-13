@@ -18,6 +18,6 @@ function Line:render()
         self.gameobject.x - offx*length/2, 
         self.gameobject.y - offy*length/2,
         self.gameobject.x + offx*length/2,
-        self.gameobject.y - offy*length/2
+        self.gameobject.y + offy*length/2
     )
 end
