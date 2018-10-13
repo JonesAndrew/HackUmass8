@@ -60,8 +60,7 @@ function Player:update(dt)
 		o.y = self.y
 		return true
 	end
-	local button = self.input:pressed()
-
+	
 	local x, y = input:get 'move'
 	self.vel_x = x * 60
 	self.vel_y = y * 60
