@@ -35,7 +35,8 @@ function Player:damage(damage)
 	health = health - damage
 	if health <= 0 then
 		active = false
-end 
+	end 
+end
 
 function Player:shoot()
 	--[[Send out a bullet at a set velocity.
