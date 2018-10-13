@@ -2,7 +2,7 @@ local Scene = require "scenes/scene"
 local pilot = require "gameobjects/plane/pilot"
 local Gameobject = require "gameobjects/index"
 local Compoonent = require "components/index"
-local explosion = require "gameobjects/explsion"
+local explosion = require "gameobjects/explosion"
 local Spyplane = Scene:extend()
 
 function Spyplane:new()
