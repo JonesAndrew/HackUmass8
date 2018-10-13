@@ -6,7 +6,7 @@ have to push other players off. Players can charge, with the caveat that the
 boost cannot be corrected after firing.
 Last player wins.
 
-2. "Strobe Mashing" (FFA) - Players have to button mash to match the prompt on 
+2. "AAAAAAAAAA" (FFA) - Players have to button mash to match the prompt on 
 screen. Prompts change suddenly and at random. The objective is to move from 
 one side of the screen to the other. Incorrect mashes move you backwards, 
 correct mashes move you forwards. 
@@ -43,8 +43,19 @@ but the property X < XX < XXX < XXXX will always hold. The players must continue
 to pour poision into the vial until it explodes (The vial can hold an 
 unspecified amount of poison). First team to explode loses. 
 
-10. "Target Sway" (2v2) - All players are delegated into teams of 2. One player 
+10. "Don't Miss" (2v2) - All players are delegated into teams of 2. One player 
 on each team controls the direction of a swaying target. The other player 
 controls a reticle that is also swaying. The player with the gun has to choose 
 when to shoot (there is a 0.75 second delay on the shot). The team with the 
 better score wins.
+
+11. "Permutations" (FFA) - All players are tasked with developing button combo
+permutations that are three inputs long (ie AAA, AXY, BXX, etc). Player 1 starts
+with a button. Player 2 follows up with another button, and player 3 finishes 
+the string. Once the string is completed, it cannot be repeated. 
+
+12. "Bouncing Bullets" (FFA) - Players shoot bullets in order to tag other 
+players. Bullets bounce off walls. If you are hit by your own bullets, you lose 
+a lot of points. Most points win.
+
+13. "Spintrail" 
