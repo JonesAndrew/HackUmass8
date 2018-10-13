@@ -1,11 +1,11 @@
 local Component = require "components/index"
 
-local Label = Component.Component:extend()
-Component.add("label", Label)
+local LabelBigEm = Component.Component:extend()
+Component.add("labelbigem", LabelBigEm)
 
-ptboldsm = love.graphics.newFont("fonts/PT_Sans-Bold.ttf", 12)
+ptboldem = love.graphics.newFont("fonts/PT_Sans-BoldItalic.ttf", 20)
 
-function Label:new(gameobject, text)
+function LabelBigEm:new(gameobject, text)
     Component.Component.new(self, gameobject)
 
     self.offset_x = 0
@@ -14,12 +14,12 @@ function Label:new(gameobject, text)
     self.binding = nil
 end
 
-function Label:render()
+function LabelBigEm:render()
     if self.binding then
         self.text = self.binding()
     end
 
 	love.graphics.setColor(colors[4])
-	love.graphics.setFont(ptboldsm)
+	love.graphics.setFont(ptboldem)
     love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x, self.gameobject.y + self.offset_y, 400, 'center')
 end
