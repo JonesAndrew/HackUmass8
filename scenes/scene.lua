@@ -6,6 +6,7 @@ end
 
 function Scene:add_gameobject(go)
     table.insert(self.gameobjects, go)
+    return go
 end
 
 function Scene:exit()
@@ -24,8 +25,12 @@ function Scene:remove_gameobject(go)
 end
 
 function Scene:update(dt)
-    for i=1,#self.gameobjects do
-        self.gameobjects[i]:update(dt)
+    local i = 1
+    while i<=#self.gameobjects do
+        if self.gameobjects[i]:update(dt) then
+        else
+            i = i + 1
+        end
     end
 end
 

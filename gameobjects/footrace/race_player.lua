@@ -3,6 +3,7 @@ local Component = require "components/index"
 local baton = require "baton"
 
 local Player = Gameobject.Gameobject:extend()
+local Speedline = require "gameobjects/speedline"
 
 function Player:new(index)
     Gameobject.Gameobject.new(self)
@@ -25,10 +26,13 @@ function Player:new(index)
     }
 
     self.shape = self:add_component(Component.get('shape')(self, 8))
+
+    self.line_cool = 0
 end
 
 function Player:update(dt)
     self.input:update()
+    self.line_cool = self.line_cool - dt
 
     local button = nil
     if self.input:pressed('a') then
@@ -64,6 +68,17 @@ function Player:update(dt)
 
     if self.vel_x ~= 0 then
         self.shape.radius = 7
+        if self.line_cool <= 0 then
+            self.line_cool = 0.05
+            local dir = 1
+            if self.vel_x > 0 then
+                dir = -1
+            end
+
+            local line = Director.current:add_gameobject(Speedline(math.abs(self.vel_x) * 2 + 30, (-1 + dir)/2 * math.pi))
+            line.x = self.x + 8 * dir
+            line.y = self.y + love.math.random(-8, 8)
+        end
     else
         self.shape.radius = 8
     end
