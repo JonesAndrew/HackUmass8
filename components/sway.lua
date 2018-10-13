@@ -19,9 +19,8 @@ function Sway:update(dt)
 	else if (!moveflag) 
 		return
 	local vector = {gameobject.x - destination[1], gameobject.y - destination[2]}
-	local perp = {-vector[2], vector[1]}
-	gameobject.vel_x += perp[1] * dt
-	gameobject.vel_y += perp[2] * dt
+	gameobject.vel_x += -vector[2] * dt --inverted vector
+	gameobject.vel_y += vector[1] * dt
 	return
 
 
