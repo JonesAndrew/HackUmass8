@@ -4,7 +4,7 @@ Object = require "classic"
 require.tree("components")
 require.tree("gameobjects")
 
-Director = require "scenes/director"
+Director = require "scenes/dontmiss"
 Basic = require "scenes/basic_scene"
 
 function approach(current, target, delta)
@@ -28,7 +28,7 @@ function love.load()
 
     resize(2)
 
-    Director:start_with_scene(require "scenes/fortnite"())
+    Director:start_with_scene(require "scenes/dontmiss"())
 
     main_canvas = love.graphics.newCanvas(gw, gh)
 end

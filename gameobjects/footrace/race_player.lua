@@ -19,7 +19,7 @@ function Player:new(index)
         x = {'key:c', 'button:x'},
         y = {'key:v', 'button:y'},
       },
-      bveq 
+    }
 
     self.shape = self:add_component(Component.get('shape')(self, 8))
 

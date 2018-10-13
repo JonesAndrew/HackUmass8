@@ -42,6 +42,8 @@ function Reticle:fire(gameobject, dt)
 	self.timer = self.timer - dt
 	self.inner.radius = math.floor(self.timer * self.inner.radius + 0.5)
 	self.outer.radius = math.floor(self.timer * self.outer.radius + 0.5)
-	if (self.timer =< 0)
+	if (self.timer <= 0) then
 		self.inner.radius = 1;
+	end
 end
+return Reticle
