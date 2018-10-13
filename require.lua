@@ -10,7 +10,7 @@ local lfs   = love.filesystem
 local cache = {}
 
 local function toFSPath(requirePath) return requirePath:gsub("%.", "/") end
-local function toRequirePath(fsPath) return fsPath:gsub('/','.') end
+local function toRequirePath(fsPath) return fsPath:gsub('/','/') end
 local function noExtension(path)     return path:gsub('%.lua$', '') end
 local function noEndDot(str)         return str:gsub('%.$', '') end
 
@@ -23,7 +23,7 @@ function require.tree(requirePath)
 
     for _,entry in ipairs(entries) do
       fsPath = toFSPath(requirePath .. '.' .. entry)
-      if lfs.getInfo(fsPath) == 'directory' then
+      if #love.filesystem.getDirectoryItems(toRequirePath(fsPath)) > 0 then
         result[entry] = require.tree(toRequirePath(fsPath))
       else
         entry = noExtension(entry)
