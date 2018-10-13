@@ -39,7 +39,7 @@ function Player:new(index)
         }
     end
 
-    self.shape = self:add_component(Component.get('shape')(self, 8))
+    self.shape = self:add_component(Component.get('circle')(self, 12, index + 2))
 
     self.line_cool = 0
     self.charge = 0
