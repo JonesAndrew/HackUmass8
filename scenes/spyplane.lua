@@ -17,19 +17,19 @@ function Spyplane:new()
 	table.insert(self.players,p1)
 
 	--Reassigning "go" to new pilots. Yes it's lazy but w/e
-	p2 = pilot(2)
+	local p2 = pilot(2)
 	self:add_gameobject(go)
 	p2.x = 200
 	p2.y = 100
 	table.insert(self.players, p2)
 
-	p3 = pilot(3)
+	local p3 = pilot(3)
 	self:add_gameobject(go)
 	p3.x = 100
 	p3.y = 200
 	table.insert(self.players, p3)
 
-	p4 = pilot(4)
+	local p4 = pilot(4)
 	self:add_gameobject(go)
 	p4.x = 200
 	p4.y = 200
