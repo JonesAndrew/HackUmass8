@@ -31,7 +31,7 @@ function Footrace:new()
     go.y = 220
 
     local title = Gameobject.get('basic')()
-    self.button_label = title:add_component(Component.get('labelbig')(title, 'a'))
+    self.button_label = title:add_component(Component.get('labeldisplay')(title, 'a'))
     title.x = 240
     self:add_gameobject(title)
 
