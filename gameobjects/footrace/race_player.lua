@@ -29,6 +29,10 @@ function Player:new(index)
 end
 
 function Player:update(dt)
+    if self.stop then
+        return
+    end
+
     self.input:update()
     self.line_cool = self.line_cool - dt
 
@@ -44,7 +48,7 @@ function Player:update(dt)
     end
 
     if button == Director.current.button then
-        self.vel_x = 40
+        self.vel_x = 55
     elseif button ~= nil then
         self.vel_x = -30
     end

@@ -43,7 +43,11 @@ function Director:update(dt)
 
     if self.current:update(dt) then
         if self.next == nil then
-            return true
+            self.next = self.board
+            self.board = nil
+            if self.next == nil then
+                return true
+            end
         end
 
         self.current = self.next

@@ -45,6 +45,7 @@ function Player:new(index)
     self.charge = 0
     self.stun = 0
     self.dash = false
+    self.color = 3
 
     self.last_x = 1
     self.last_y = 0
