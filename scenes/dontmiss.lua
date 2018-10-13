@@ -10,7 +10,7 @@ function DontMiss:new()
     self.players = {}
     self.radius = 200
 
-    local go = Reticle()
+    local go = Reticle(1)
     self:add_gameobject(go)
     go.color = 3
     go.x = 240 - 70
@@ -33,7 +33,6 @@ function DontMiss:render()
     Scene.render(self)
 
     love.graphics.setColor(colors[3])
-    love.graphics.circle("line", 240, 135, self.radius)
 end
 
 return DontMiss

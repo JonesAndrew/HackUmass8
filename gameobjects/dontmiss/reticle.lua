@@ -1,9 +1,11 @@
 local Gameobject = require "Gameobjects/index"
+local Component = require "components/index"
+local baton = require "baton"
 
 local Reticle = Gameobject.Gameobject:extend()
 Gameobject.add("reticle", Reticle)
 
-function Reticle:new()
+function Reticle:new(index)
     Gameobject.Gameobject.new(self)
 
     self.input = baton.new {
@@ -23,27 +25,28 @@ function Reticle:new()
       joystick = love.joystick.getJoysticks()[index],
     }
 
-    self.inner = self:add_component(Component.get('circle')(self, 12))
-    self.outer = self:add_component(Component.get('circle')(self, 48))
-    self.sway = self.add_component(Component.get('sway')(self))
-    self.primed = false;
-    self.timer = 1.00;
+    self.inner = self:add_component(Component.get('circle')(self, 6))
+    self.outer = self:add_component(Component.get('circle')(self, 18))
+    self.sway = self:add_component(Component.get('sway')(self, 4))
+    self.primed = false
+    self.timer = 2.50
 end
 function Reticle:update(dt)
 	self.input:update()
+	local x, y = self.input:get('move')
+	self.vel_x = approach(self.vel_x, x * 60, dt * 400)
+	self.vel_y = approach(self.vel_y, y * 60, dt * 400)
 	Gameobject.Gameobject.update(self, dt)
 	if (self.input:down('a') and not self.primed) then self.primed = true
-	elseif self.primed then self.fire(dt) end
+	elseif self.primed then self:fire(dt) end
 end
 
 
 
-function Reticle:fire(gameobject, dt) 
-	self.timer = self.timer - dt
-	self.inner.radius = math.floor(self.timer * self.inner.radius + 0.5)
-	self.outer.radius = math.floor(self.timer * self.outer.radius + 0.5)
-	if (self.timer <= 0) then
-		self.inner.radius = 1;
-	end
+function Reticle:fire(x) 
+	self.timer = self.timer - x
+	self.inner.style = "fill"
+	self.inner.radius = math.floor(self.timer/2.50 * self.inner.radius)
+	self.outer.radius = math.floor(self.timer/2.50 * self.outer.radius)
 end
 return Reticle

@@ -4,7 +4,11 @@ Object = require "classic"
 require.tree("components")
 require.tree("gameobjects")
 
-Director = require "scenes/dontmiss"
+<<<<<<< HEAD
+Director = require "scenes/Director"
+=======
+Director = require "scenes/director"
+>>>>>>> daff3d13063ac9713ad6887849d9fd6ba1f1fd48
 Basic = require "scenes/basic_scene"
 
 function approach(current, target, delta)
@@ -26,9 +30,9 @@ function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.graphics.setLineStyle('rough')
 
-    resize(2)
+    resize(3)
 
-    Director:start_with_scene(require "scenes/dontmiss"())
+    Director:start_with_scene(require "scenes/footrace"())
 
     main_canvas = love.graphics.newCanvas(gw, gh)
 end
