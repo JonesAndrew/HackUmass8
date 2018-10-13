@@ -48,7 +48,7 @@ end
 
 function Fortnite:update(dt)
     Scene.update(self, dt)
-    self.radius = self.radius - dt
+    self.radius = self.radius - dt * 1.5
 
     -- self.countdown = self.countdown - dt
     -- if self.countdown < 0 then

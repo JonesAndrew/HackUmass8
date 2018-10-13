@@ -45,6 +45,9 @@ function Player:new(index)
     self.charge = 0
     self.stun = 0
     self.dash = false
+
+    self.last_x = 1
+    self.last_y = 0
 end
 
 function Player:update(dt)
@@ -53,6 +56,10 @@ function Player:update(dt)
     self.stun = self.stun - dt
 
     local x, y = self.input:get('move')
+    if (x ~= 0 or y ~= 0) then
+        self.last_x = x
+        self.last_y = y
+    end
 
     if self.stun > 0 then
         self.charge = 0
@@ -60,10 +67,18 @@ function Player:update(dt)
         self.vel_x = approach(self.vel_x, 0, dt * 240)
         self.vel_y = approach(self.vel_y, 0, dt * 240)
 
-        self.charge = math.min(self.charge + dt, 0.8)
+        self.charge = math.max(math.min(self.charge + dt, 1), 0.4)
     elseif self.input:released('a') then
-        self.vel_x = (self.charge + 0.2) * 320 * x
-        self.vel_y = (self.charge + 0.2) * 320 * y
+        if x == 0 and y == 0 then
+            x = self.last_x
+            y = self.last_y
+        end
+        
+        local len = (x^2 + y^2)^0.5
+        x = x / len
+        y = y / len
+        self.vel_x = (self.charge) * 320 * x
+        self.vel_y = (self.charge) * 320 * y
         self.dash = true
         self.charge = 0
     else
@@ -98,11 +113,13 @@ function Player:update(dt)
                             other.vel_y = self.vel_y
                             self.vel_x = temp_x
                             self.vel_x = temp_y
+                            other.dash = false
+                            self.dash = false
                             break
                         else
                             other.vel_x = self.vel_x
                             other.vel_y = self.vel_y
-                            other.stun = 0.1
+                            other.stun = 0.25
                             other.dash = true
                             self.vel_x = self.vel_x / 4
                             self.vel_y = self.vel_y / 4
@@ -126,7 +143,7 @@ function Player:update(dt)
         return true
     end
 
-    self.shape.radius = 8 - (self.charge * 1/0.8) * 4
+    self.shape.radius = 8 - (self.charge) * 4
 end
 
 return Player
