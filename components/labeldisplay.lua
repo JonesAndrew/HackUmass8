@@ -32,6 +32,10 @@ function LabelDisplay:new(gameobject, text)
     self.binding = nil
 end
 
+function LabelDisplay:updateText(text)
+	self.text = Cyrillify(text)
+end
+
 function LabelDisplay:render()
     if self.binding then
         self.text = self.binding()
@@ -43,6 +47,8 @@ function LabelDisplay:render()
     love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x - 2, self.gameobject.y + self.offset_y + 2, 400, 'center')
     love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x + 2, self.gameobject.y + self.offset_y - 2, 400, 'center')
     love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x + 2, self.gameobject.y + self.offset_y + 2, 400, 'center')
+    love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x - 2, self.gameobject.y + self.offset_y, 400, 'center')
+    love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x + 2, self.gameobject.y + self.offset_y, 400, 'center')
 	love.graphics.setColor(colors[1])
     love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x, self.gameobject.y + self.offset_y, 400, 'center')
 end
