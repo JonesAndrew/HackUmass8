@@ -15,14 +15,16 @@ function Gameobject:new()
     self.components = {}
     self.x = 0
     self.y = 0
-    self.del_x = 0
-    self.del_y = 0
+    self.vel_x = 0
+    self.vel_y = 0
 end
 
 function Gameobject:update(dt)
     for _, comp in ipairs(self.components) do
         comp:update(dt)
     end
+    self.x = self.x + self.vel_x * dt
+    self.y = self.y + self.vel_y * dt
 end
 
 function Gameobject:add_component(comp)
