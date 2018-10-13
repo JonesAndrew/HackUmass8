@@ -48,6 +48,12 @@ function Gameobject:get_component(comp_type)
 end
 
 function Gameobject:render()
+    if self.color then
+        love.graphics.push()
+        local c = colors[self.color]
+        love.graphics.setColor(c[1], c[2], c[3])
+    end
+
     local x,y = self.x,self.y
     self.x = math.floor(x + 0.5)
     self.y = math.floor(y + 0.5)
@@ -55,6 +61,10 @@ function Gameobject:render()
         comp:render()
     end
     self.x,self.y = x,y
+
+    if self.color then
+        love.graphics.pop()
+    end
 end
 
 gos["basic"] = Gameobject

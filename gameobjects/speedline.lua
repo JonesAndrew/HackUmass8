@@ -12,6 +12,7 @@ function Speedline:new(vel, rotation)
     self.vel_y = vel * math.sin(rotation)
 
     self.count_down = 0.2
+    self.color = 3
 end
 
 function Speedline:update(dt)

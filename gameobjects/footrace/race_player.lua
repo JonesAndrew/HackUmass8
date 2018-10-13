@@ -69,14 +69,14 @@ function Player:update(dt)
     if self.vel_x ~= 0 then
         self.shape.radius = 7
         if self.line_cool <= 0 then
-            self.line_cool = 0.05
+            self.line_cool = 0.025
             local dir = 1
             if self.vel_x > 0 then
                 dir = -1
             end
 
             local line = Director.current:add_gameobject(Speedline(math.abs(self.vel_x) * 2 + 30, (-1 + dir)/2 * math.pi))
-            line.x = self.x + 8 * dir
+            line.x = self.x + 9 * dir
             line.y = self.y + love.math.random(-8, 8)
         end
     else
