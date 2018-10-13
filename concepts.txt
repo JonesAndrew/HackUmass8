@@ -60,7 +60,6 @@ a lot of points. Most points win.
 
 13. "Defacement" (FFA) - Each player is given a sequence of images and needs to point out the wrong one (nazi hat vs soviet hat), soviet flag, Communist Manifesto vs. Capitalist Manifesto, etc. Little gun shy on this one.
 
-
 14. "Decode" (FFA) - Players are given famous phrases from American people that are encoded randomly. Successfully decoding first awards a point or maximum number of points. 3 rounds, whoever has the most points wins.
 
 15. "Infiltrate" (1v1) If you've ever played Quoridor, it's basically this. Each round two players are seleted. Player one needs to place randomly generated bridges and connect them to reach an access point. However, every X second interval someone can place a "wall" to impede someone's progress or "sabotage" a piece to disable it. Disabled pieces won't work for a certain period of time, which can be reduced by mashing. Both players use the same grid and piecess. 
