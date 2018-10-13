@@ -4,11 +4,8 @@ Object = require "classic"
 require.tree("components")
 require.tree("gameobjects")
 
-<<<<<<< HEAD
-Director = require "scenes/Director"
-=======
+
 Director = require "scenes/director"
->>>>>>> daff3d13063ac9713ad6887849d9fd6ba1f1fd48
 Basic = require "scenes/basic_scene"
 
 function approach(current, target, delta)
