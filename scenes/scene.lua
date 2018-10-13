@@ -28,6 +28,7 @@ function Scene:update(dt)
     local i = 1
     while i<=#self.gameobjects do
         if self.gameobjects[i]:update(dt) then
+            table.remove(self.gameobjects, i)
         else
             i = i + 1
         end
