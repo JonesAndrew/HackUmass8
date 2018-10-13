@@ -72,4 +72,4 @@ function Player:update(dt)
 	end
 end
 
-return pilot
+return Player
