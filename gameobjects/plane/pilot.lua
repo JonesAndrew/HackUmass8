@@ -65,10 +65,10 @@ function Player:update(dt)
 	self.vel_x = x * 60
 	self.vel_y = y * 60
 
-	if input:pressed('shoot') then
+--[[	if input:pressed('shoot') then
 		Player:shoot()
 		--shoot function
-	end
+	end--]]
 end
 
 return Player
