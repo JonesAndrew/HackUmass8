@@ -60,6 +60,7 @@ end
 function Fortnite:render()
     Scene.render(self)
 
+    love.graphics.setColor(colors[3])
     love.graphics.circle("line", 240, 135, self.radius)
 end
 

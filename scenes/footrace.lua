@@ -39,7 +39,7 @@ function Footrace:new()
 end
 
 function Footrace:random_button()
-   local buttons = {'a', 'b', 'c', 'd', 'STOP'}
+   local buttons = {'a', 'b', 'x', 'y', 'STOP'}
    self.button = buttons[love.math.random(5)]
    self.button_label.text = self.button
 end

@@ -19,7 +19,6 @@ function Speedline:update(dt)
     Gameobject.Gameobject.update(self, dt)
     self.count_down = self.count_down - dt
     if self.count_down < 0 then
-        Director.current:remove_gameobject(self)
         return true
     end
 end

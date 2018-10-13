@@ -15,9 +15,9 @@ function Player:new(index)
         up = {'key:up', 'key:w', 'axis:lefty-', 'button:dpup'},
         down = {'key:down', 'key:s', 'axis:lefty+', 'button:dpdown'},
         a = {'key:z', 'button:a'},
-        b = {'key:x', 'button:a'},
-        c = {'key:c', 'button:a'},
-        d = {'key:v', 'button:a'},
+        b = {'key:x', 'button:b'},
+        x = {'key:c', 'button:x'},
+        y = {'key:v', 'button:y'},
       },
       pairs = {
         move = {'left', 'right', 'up', 'down'}
@@ -28,6 +28,7 @@ function Player:new(index)
     self.shape = self:add_component(Component.get('shape')(self, 8))
 
     self.line_cool = 0
+    self.color = 3
 end
 
 function Player:update(dt)
@@ -39,10 +40,10 @@ function Player:update(dt)
         button = 'a'
     elseif self.input:pressed('b') then
         button = 'b'
-    elseif self.input:pressed('c') then
-        button = 'c'
-    elseif self.input:pressed('d') then
-        button = 'd'
+    elseif self.input:pressed('x') then
+        button = 'x'
+    elseif self.input:pressed('y') then
+        button = 'y'
     end
 
     if button == Director.current.button then

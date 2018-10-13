@@ -3,6 +3,7 @@ local Component = require "components/index"
 local baton = require "baton"
 
 local Player = Gameobject.Gameobject:extend()
+local Explosion = require "gameobjects/explosion"
 local Speedline = require "gameobjects/speedline"
 
 function Player:new(index)
@@ -16,9 +17,6 @@ function Player:new(index)
             up = {'key:up', 'key:w', 'axis:lefty-', 'button:dpup'},
             down = {'key:down', 'key:s', 'axis:lefty+', 'button:dpdown'},
             a = {'key:z', 'button:a'},
-            b = {'key:x', 'button:a'},
-            c = {'key:c', 'button:a'},
-            d = {'key:v', 'button:a'},
           },
           pairs = {
             move = {'left', 'right', 'up', 'down'}
@@ -33,9 +31,6 @@ function Player:new(index)
             up = {'axis:lefty-', 'button:dpup'},
             down = {'axis:lefty+', 'button:dpdown'},
             a = {'button:a'},
-            b = {'button:a'},
-            c = {'button:a'},
-            d = {'button:a'},
           },
           pairs = {
             move = {'left', 'right', 'up', 'down'}
@@ -60,6 +55,7 @@ function Player:update(dt)
     local x, y = self.input:get('move')
 
     if self.stun > 0 then
+        self.charge = 0
     elseif self.input:down('a') then
         self.vel_x = approach(self.vel_x, 0, dt * 240)
         self.vel_y = approach(self.vel_y, 0, dt * 240)
@@ -92,6 +88,9 @@ function Player:update(dt)
                 if other ~= self and not other.dead then
                     if ((self.x - other.x)^2 + (self.y - other.y)^2)^0.5 < 17 then
                         Director:shake(1.5)
+                        local o = Director.current:add_gameobject(Explosion(8, 0.1))
+                        o.x = (self.x + other.x)/2
+                        o.y = (self.y + other.y)/2
                         if other.dash then
                             local temp_x = other.vel_x
                             local temp_y = other.vel_y
@@ -120,8 +119,10 @@ function Player:update(dt)
 
     if dist(self.x, self.y, 240, 135) > Director.current.radius then
         self.dead = true
-        Director.current:remove_gameobject(self)
         Director:shake(2.5)
+        local o = Director.current:add_gameobject(Explosion())
+        o.x = self.x
+        o.y = self.y
         return true
     end
 
