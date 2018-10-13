@@ -26,9 +26,9 @@ function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.graphics.setLineStyle('rough')
 
-    resize(2)
+    resize(3)
 
-    Director:start_with_scene(require "scenes/firesquad"())
+    Director:start_with_scene(require "scenes/footrace"())
 
     main_canvas = love.graphics.newCanvas(gw, gh)
 end
