@@ -26,29 +26,38 @@ function Player:new(index)
     self.health = 5
     player.active = true
 	self.circle = self:add_component(Component.get('circle')(self, 5, 3))
+	self.bullet_count = 0
 
 end
 
 --Calculates damage. Returns false when the pilot is destroyed
 function Player:damage(damage)
 	health = health - damage
-	if health <= 0 then
-		return false
-	end
-
-	return true
 end 
 
 function Player:shoot()
 	--[[Send out a bullet at a set velocity.
 		Any way to space time out between shots?
 	]]
+	local b = bullet:new(bullet_count)
+	b.x = self.x
+	b.y = self.y + 2
+	bullet_count = bullet_count + 1
+
+	--Add to array of bullets the scene will look at
+	table.insert(Director.current.bullets, b)
 end
 
 function Player:update(dt)
 	self.input:update()
-	local button = self.input:pressed()
 	
+	if health <= 0 then
+		local o = Direcor.current:add_gameobject(Explosion())
+		o.x = self.x
+		o.y = self.y
+		return true
+	end
+	local button = self.input:pressed()
 	if button == 'left' then
 		self.vel_x = -40
 	elseif button == 'right' then
@@ -60,9 +69,6 @@ function Player:update(dt)
 	elseif button == 'shoot' then
 		Player:shoot()
 		--shoot function
-    end
 
---change shape into plane?
--- add array of bullets and check each bullet with position of soviets
 end
 
