@@ -19,11 +19,7 @@ function Player:new(index)
         x = {'key:c', 'button:x'},
         y = {'key:v', 'button:y'},
       },
-      pairs = {
-        move = {'left', 'right', 'up', 'down'}
-      },
-      joystick = love.joystick.getJoysticks()[index],
-    }
+      bveq 
 
     self.shape = self:add_component(Component.get('shape')(self, 8))
 

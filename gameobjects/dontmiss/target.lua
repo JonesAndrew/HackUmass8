@@ -7,5 +7,6 @@
 --     Gameobject.Gameobject.new(self, gameobject)
 
 --     self.inner = self:add_component(Component.get('circle')(self, 24))
---     self.
+--	   self.dart = nil
+  
 -- end
