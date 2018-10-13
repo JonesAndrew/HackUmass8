@@ -1,0 +1,74 @@
+local Gameobject = require "Gameobjects/index"
+local Component = require "components/index"
+local baton = require "baton"
+
+local Player = Gameobject.Gameobject:extend()
+
+function Player:new(index)
+    Gameobject.Gameobject.new(self)
+
+    self.input = baton.new {
+      controls = {
+        left = {'key:left', 'key:a', 'axis:leftx-', 'button:dpleft'},
+        right = {'key:right', 'key:d', 'axis:leftx+', 'button:dpright'},
+        up = {'key:up', 'key:w', 'axis:lefty-', 'button:dpup'},
+        down = {'key:down', 'key:s', 'axis:lefty+', 'button:dpdown'},
+        a = {'key:z', 'button:a'},
+        b = {'key:x', 'button:a'},
+        c = {'key:c', 'button:a'},
+        d = {'key:v', 'button:a'},
+      },
+      pairs = {
+        move = {'left', 'right', 'up', 'down'}
+      },
+      joystick = love.joystick.getJoysticks()[index],
+    }
+
+    self.shape = self:add_component(Component.get('shape')(self, 8))
+end
+
+function Player:update(dt)
+    self.input:update()
+
+    local button = nil
+    if self.input:pressed('a') then
+        button = 'a'
+    elseif self.input:pressed('b') then
+        button = 'b'
+    elseif self.input:pressed('c') then
+        button = 'c'
+    elseif self.input:pressed('d') then
+        button = 'd'
+    end
+
+    if button == Director.current.button then
+        self.vel_x = 40
+    elseif button ~= nil then
+        self.vel_x = -30
+    end
+
+    local delta = 360 * dt
+    if self.vel_x >= 0 then
+        if self.vel_x < delta then
+            self.vel_x = 0
+        else
+            self.vel_x = self.vel_x - delta
+        end
+    else
+        if self.vel_x > -delta then
+            self.vel_x = 0
+        else
+            self.vel_x = self.vel_x + delta
+        end
+    end
+
+    if self.vel_x ~= 0 then
+        self.shape.radius = 7
+    else
+        self.shape.radius = 8
+    end
+
+    Gameobject.Gameobject.update(self, dt)
+end
+
+return Player
