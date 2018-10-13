@@ -19,6 +19,7 @@ function Player:new(index)
         x = {'key:c', 'button:x'},
         y = {'key:v', 'button:y'},
       },
+      joystick = love.joystick.getJoysticks()[index],
     }
 
     self.shape = self:add_component(Component.get('circle')(self, 12, index + 2))

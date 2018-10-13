@@ -26,7 +26,7 @@ function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.graphics.setLineStyle('rough')
 
-    resize(3)
+    resize(2)
 
     Director:start_with_scene(require "scenes/footrace"())
 
