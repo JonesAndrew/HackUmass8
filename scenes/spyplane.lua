@@ -37,7 +37,7 @@ function Spyplane:new()
 
 end
 
-function Spylane:update(dt)
+function Spyplane:update(dt)
 	Scene.update(self, dt)
 	--add some speed lines, make them zoom.
 
