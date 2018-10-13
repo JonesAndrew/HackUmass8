@@ -58,18 +58,38 @@ the string. Once the string is completed, it cannot be repeated.
 players. Bullets bounce off walls. If you are hit by your own bullets, you lose 
 a lot of points. Most points win.
 
-13. "Defacement" (FFA) - Each player is given a sequence of images and needs to point out the wrong one (nazi hat vs soviet hat), soviet flag, Communist Manifesto vs. Capitalist Manifesto, etc. Little gun shy on this one.
+13. "Defacement" (FFA) - Each player is given a sequence of images and needs to point out the 
+wrong one (nazi hat vs soviet hat), soviet flag, Communist Manifesto vs. Capitalist Manifesto,etc. 
+Little gun shy on this one.
 
-14. "Decode" (FFA) - Players are given famous phrases from American people that are encoded randomly. Successfully decoding first awards a point or maximum number of points. 3 rounds, whoever has the most points wins.
+14. "Decode" (FFA) - Players are given famous phrases from American people that are encoded randomly. 
+Successfully decoding first awards a point or maximum number of points. 
+3 rounds, whoever has the most points wins.
 
-15. "Infiltrate" (1v1) If you've ever played Quoridor, it's basically this. Each round two players are seleted. Player one needs to place randomly generated bridges and connect them to reach an access point. However, every X second interval someone can place a "wall" to impede someone's progress or "sabotage" a piece to disable it. Disabled pieces won't work for a certain period of time, which can be reduced by mashing. Both players use the same grid and piecess. 
+15. "Infiltrate" (1v1) If you've ever played Quoridor, it's basically this. Each round two players are seleted. 
+Player one needs to place randomly generated bridges and connect them to reach an access point. 
+However, every X second interval someone can place a "wall" to impede someone's progress or 
+"sabotage" a piece to disable it. Disabled pieces won't work for a certain period of time, 
+which can be reduced by mashing. Both players use the same grid and piecess. 
 
-16. "Glory to Country" (FFA) Follow along at the military rally! Drive a tank along a rally and try to avoid the American spies seeking to sabotage you. Have randomly placed events i.e a mine, a sniper you must crush, and a cannon salute.
+16. "Glory to Country" (FFA) Follow along at the military rally! Drive a tank along a rally 
+and try to avoid the American spies seeking to sabotage you. Have randomly placed events 
+i.e a mine, a sniper you must crush, and a cannon salute.
 
-17. "ESCAPE!" (1 v 3) - Pacman except the ghosts are Soviet guards and you're an American trying to collect papers throughout several preset (or randomly generated) mazes. American guy runs faster so as to even out the competition. Time limit before the general comes by to keep the game short and sweet
+17. "ESCAPE!" (1 v 3) - Pacman except the ghosts are Soviet guards and you're an 
+American trying to collect papers throughout several preset (or randomly generated) mazes. 
+American guy runs faster so as to even out the competition. Time limit before the 
+general comes by to keep the game short and sweet
 
-18. "Spyplane" (2v2) - Two spy planes have to navigate through the skies to make it to a dropoff point. Following these planes are two fighter jets with guns. Team attack is on so you have to remain coordinated. Crashing into a plane instantly downs both of them. Small HP so it goes quickly
+18. "Spyplane" (2v2) - Two spy planes have to navigate through the skies to make it 
+to a dropoff point. Following these planes are two fighter jets with guns. 
+Team attack is on so you have to remain coordinated. Crashing into a plane instantly downs both of them. 
+Small HP so it goes quickly
 
-19. "Shoot The Messenger" - Hot potato, except you have to break news to your general and you're passing the documents around before the angry general gets to the meeting. Timer is randomly generated from a given range (35-50 seconds). Players have to hold the documents for at least a second before choosing to toss it to somebody. 
+19. "Shoot The Messenger" - Hot potato, except you have to break news to your general and you're 
+passing the documents around before the angry general gets to the meeting. Timer is randomly 
+generated from a given range (35-50 seconds). Players have to hold the documents for at least a 
+second before choosing to toss it to somebody. 
 
-20. "Bomb" - MAKE A BOMB OH GOD. An image is shown for 10 seconds of a bomb. 5 parts are chosen and assembled randomly in the image, 7 possible parts that users can connect. Most "correct" placement of objects wins. If both are 100%, first one wins.
+20. "Bomb" - MAKE A BOMB OH GOD. An image is shown for 10 seconds of a bomb. 5 parts are chosen 
+and assembled randomly in the image, 7 possible parts that users can connect. Most "correct" placement of objects wins. If both are 100%, first one wins.
