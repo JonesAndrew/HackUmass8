@@ -39,5 +39,10 @@ function LabelDisplay:render()
 	
 	love.graphics.setFont(rubikmono)
 	love.graphics.setColor(colors[3])
+    love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x - 2, self.gameobject.y + self.offset_y - 2, 400, 'center')
+    love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x - 2, self.gameobject.y + self.offset_y + 2, 400, 'center')
+    love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x + 2, self.gameobject.y + self.offset_y - 2, 400, 'center')
+    love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x + 2, self.gameobject.y + self.offset_y + 2, 400, 'center')
+	love.graphics.setColor(colors[1])
     love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x, self.gameobject.y + self.offset_y, 400, 'center')
 end
