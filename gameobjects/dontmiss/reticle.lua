@@ -1,9 +1,9 @@
 local Gameobject = require "Gameobjects/index"
 
-local Speedline = Gameobject.Gameobject:extend()
-Gameobject.add("speedline", Speedline)
+local Reticle = Gameobject.Gameobject:extend()
+Gameobject.add("reticle", Reticle)
 
-function Speedline:new(gameobject, text)
+function Reticle:new(gameobject, text)
     Gameobject.Gameobject.new(self, gameobject)
 
     self.offset_x = 0
