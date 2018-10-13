@@ -65,10 +65,10 @@ function Player:update(dt)
 	self.vel_x = x * 600
 	self.vel_y = y * 600
 
---[[	if input:pressed('shoot') then
+	if input:get('shoot') then
 		Player:shoot()
 		--shoot function
-	end--]]
+	end
 	-- movement handled by superclass
 	Gameobject.Gameobject.update(self, dt)
 end
