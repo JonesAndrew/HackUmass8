@@ -12,16 +12,25 @@ end
 
 function Sway:checkpoints(vectora, vectorb)
 	return ((math.abs(vectora[1] - vectorb[1]) <= 3) and (math.abs(vectora[1] - vectorb[2]) <= 3))
+end
 
 function Sway:update(dt)
-	if (checkpoints({gameobject.x, gameobject.y}, destination))
+	if (checkpoints({gameobject.x, gameobject.y}, destination)) then
 		self.destination = {(gameobject.x + love.math.random(-48,48)), (gameobject.y + love.math.random(-27,27))}
-	else if (!moveflag) 
+	elseif not (moveflag) then
 		return
+    end
 	local vector = {gameobject.x - destination[1], gameobject.y - destination[2]}
+<<<<<<< HEAD
 	gameobject.vel_x += -vector[2] * dt --inverted vector
 	gameobject.vel_y += vector[1] * dt
+=======
+	local perp = {-vector[2], vector[1]}
+	gameobject.vel_x = gameobject.vel_x + perp[1] * dt
+	gameobject.vel_y = gameobject.vel_y + perp[2] * dt
+>>>>>>> 68b7dd766336b101c0f4698bc9ff5dd7f92ec69f
 	return
+end
 
 
 

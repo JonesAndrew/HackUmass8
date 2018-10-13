@@ -1,12 +1,19 @@
-local gameobjects = {}
+local gos = {}
 
-local function add_gameobject(name, go)
-    gameobjects[name] = go
+local function add(name, go)
+    gos[name] = go
+    print 'add'
+    for k,v in pairs(gos) do
+        print(k, v)
+    end
     go.type = name
 end
 
-local function gameobject(name)
-    return gameobjects[name]
+local function get(name)
+    for k,v in pairs(gos) do
+        print(k, v)
+    end
+    return gos[name]
 end
 
 local Gameobject = Object:extend()
@@ -50,10 +57,10 @@ function Gameobject:render()
     self.x,self.y = x,y
 end
 
-gameobjects["basic"] = Gameobject
+gos["basic"] = Gameobject
 
 return {
-    add = add_gameobject, 
-    get = gameobject, 
+    add = add, 
+    get = get, 
     Gameobject = Gameobject
 }
