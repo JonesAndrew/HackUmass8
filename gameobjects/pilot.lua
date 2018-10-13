@@ -43,8 +43,7 @@ function Player:shoot()
 	--[[Send out a bullet at a set velocity.
 		Any way to space time out between shots?
 	]]
-	
-
+end
 
 function Player:update(dt)
 	self.input:update()
@@ -61,6 +60,7 @@ function Player:update(dt)
 	elseif button == 'shoot' then
 		Player:shoot()
 		--shoot function
+    end
 
 --change shape into plane?
 -- add array of bullets and check each bullet with position of soviets
