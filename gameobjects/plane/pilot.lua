@@ -61,15 +61,11 @@ function Player:update(dt)
 		return true
 	end
 	local button = self.input:pressed()
-	if button == 'left' then
-		self.vel_x = -40
-	elseif button == 'right' then
-		self.vel_x =  40
-	elseif button == 'up' then
-		self.vel_y = -40
-	elseif button == 'down' then
-		self.vel_y = 40
-	elseif button == 'shoot' then
+
+	local x, y = input:get 'move'
+	self.vel_x = x * 60
+	self.vel_y = y * 60
+	if input:pressed 'shoot' then
 		Player:shoot()
 		--shoot function
 	end
