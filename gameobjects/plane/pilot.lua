@@ -69,6 +69,8 @@ function Player:update(dt)
 		Player:shoot()
 		--shoot function
 	end--]]
+	-- movement handled by superclass
+	Gameobject.Gameobject.update(self, dt)
 end
 
 return Player
