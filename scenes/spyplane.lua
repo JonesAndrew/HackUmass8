@@ -8,7 +8,7 @@ local Spyplane = Scene:extend()
 function Spyplane:new()
 	Scene.new(self)
 	self.players = {}
-	self.bullets = []
+	self.bullets = {}
 
 	local p1 = pilot(1)
 	self:add_gameobject(go)
