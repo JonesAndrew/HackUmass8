@@ -69,6 +69,6 @@ function Player:update(dt)
 	elseif button == 'shoot' then
 		Player:shoot()
 		--shoot function
-
+	end
 end
 
