@@ -4,7 +4,6 @@ Object = require "classic"
 require.tree("components")
 require.tree("gameobjects")
 
-
 Director = require "scenes/director"
 Basic = require "scenes/basic_scene"
 
