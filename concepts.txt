@@ -59,3 +59,6 @@ players. Bullets bounce off walls. If you are hit by your own bullets, you lose
 a lot of points. Most points win.
 
 13. "Spintrail" 
+
+
+14. "Decode" (FFA) - Players are given famous phrases from American people that are encoded randomly. Successfully decoding first awards a point or maximum number of points. 3 rounds, whoever has the most points wins.
