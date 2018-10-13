@@ -3,6 +3,8 @@ local Component = require "components/index"
 local Label = Component.Component:extend()
 Component.add("label", Label)
 
+ptbold = love.graphics.newFont("fonts/PT_Sans-Bold.ttf", 20)
+
 function Label:new(gameobject, text)
     Component.Component.new(self, gameobject)
 
@@ -17,5 +19,7 @@ function Label:render()
         self.text = self.binding()
     end
 
+	love.graphics.setColor(colors[4])
+	love.graphics.setFont(ptbold)
     love.graphics.printf(self.text, self.gameobject.x - 200 + self.offset_x, self.gameobject.y + self.offset_y, 400, 'center')
 end
