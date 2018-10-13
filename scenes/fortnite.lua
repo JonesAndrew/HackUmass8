@@ -37,24 +37,11 @@ function Fortnite:new()
     go.x = 240 + 70
     go.y = 135 + 70
     table.insert(self.players, go)
-
-    -- local title = Gameobject.get('basic')()
-    -- self.button_label = title:add_component(Component.get('label')(title, 'a'))
-    -- title.x = 240
-    -- self:add_gameobject(title)
-
-    -- self:random_button()
 end
 
 function Fortnite:update(dt)
     Scene.update(self, dt)
     self.radius = self.radius - dt * 1.5
-
-    -- self.countdown = self.countdown - dt
-    -- if self.countdown < 0 then
-    --     self.countdown = love.math.random() + 2.5
-    --     self:random_button()
-    -- end
 end
 
 function Fortnite:render()
