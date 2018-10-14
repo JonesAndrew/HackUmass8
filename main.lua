@@ -28,7 +28,7 @@ function love.load()
 
     resize(2)
 
-    Director:start_with_scene(require "scenes/footrace"())
+    Director:start_with_scene(require "scenes/dontmiss"())
 
     main_canvas = love.graphics.newCanvas(gw, gh)
 end

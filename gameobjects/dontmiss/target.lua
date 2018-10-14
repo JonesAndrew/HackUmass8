@@ -45,11 +45,8 @@ function Target:new(index1, index2, reticle1, reticle2)
     }
 
     self.inner = self:add_component(Component.get('circle')(self, 12))
-    self.inner.style = 'fill'
     self.middle = self:add_component(Component.get('circle')(self, 36))
-    self.middle.style = 'fill'
     self.outer = self:add_component(Component.get('circle')(self, 108))
-    self.outer.style = 'fill'
     self.sway = self:add_component(Component.get('sway')(self, 5, 3, 2))
     self.t1score = 0
     self.t2score = 0
@@ -67,21 +64,22 @@ function Target:update(dt)
 	self.vel_x = approach(self.vel_x, x * 60, dt * 500)
 	self.vel_y = approach(self.vel_y, y * 60, dt * 500)
 	Gameobject.Gameobject.update(self, dt)
-	if (r1.shot) then
-		self.t1score = self:calcscore(r1.position)
-		self.t1score:reset()
-	else if (r2.shot) then
-		self.t2score = self:calcscore(r2.position)
-		self.t2score:reset()
+	if (self.r1.shot) then
+		self.t1score = self:calcscore(self.r1.position)
+		self.r1:reset()
+	elseif (self.r2.shot) then
+		self.t2score = self:calcscore(self.r2.position)
+		self.r1:reset()
 	end
+end
 	
-function calcscore(pos)
+function Target:calcscore(pos)
 	dist = ((pos[1] - self.x)^2 + (pos[2] - self.y)^2)^0.5
 	if (dist <= 12) then
 		return 3
-	else if (dist <= 36) then 
+	elseif (dist <= 36) then 
 		return 2
-	else if (dist <= 108) then
+	elseif (dist <= 108) then
 		return 1
 	else return 0 end
 end

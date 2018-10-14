@@ -62,9 +62,10 @@ function Reticle:reset()
 	self.inner.style = "line"
 	self.inner.radius = 6
 	self.outer.radius = 18
+	self.x = 240 + (-1)^(index) * 20
+	self.y = 135
 	self.primed = false;
 	self.shot = false;
-	self.position = {}
 end
 
 
