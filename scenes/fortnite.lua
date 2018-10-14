@@ -62,6 +62,13 @@ function Fortnite:update(dt)
             return true
         end
         return
+    elseif count == 0 then
+        self.win_timer = self.win_timer + dt
+        if self.win_timer > 2 then
+            Director.board:win({})
+            return true
+        end
+        return
     end
 
     self.radius = self.radius - dt * 1.5

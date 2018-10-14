@@ -8,10 +8,10 @@ Director = require "scenes/director"
 Basic = require "scenes/basic_scene"
 
 local sounds ={}
-function play_sound(sound)
+function play_sound(sound, setting)
     local s = sounds[sounds]
     if not s then
-        s = love.audio.newSource(sound, "static")
+        s = love.audio.newSource(sound, setting or "static")
         sounds[sound] = s
     end
     love.audio.play(s)
@@ -28,17 +28,16 @@ end
 local main_canvas
 
 function resize(s)
-    love.window.setMode(s*gw, s*gh) 
-    sx, sy = s, s
+    -- love.window.setMode(s*gw, s*gh) 
+    -- sx, sy = s, s
 end
 
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.graphics.setLineStyle('rough')
 
-    resize(2)
-  
-    Director:start_with_scene(require "scenes/title"())
+    -- resize(2)
+    Director:start_with_scene(require "scenes/winscreen"({}))
 
     main_canvas = love.graphics.newCanvas(gw, gh)
 end

@@ -3,7 +3,7 @@ local Component = require "components/index"
 local Label = Component.Component:extend()
 Component.add("label", Label)
 
-ptboldsm = love.graphics.newFont("fonts/kenpixel_mini_square.ttf", 8)
+ptboldsm = love.graphics.newFont("fonts/kenpixel_square.ttf", 8)
 
 function Label:new(gameobject, text)
     Component.Component.new(self, gameobject)

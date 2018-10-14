@@ -1,7 +1,7 @@
 gw = 480 
 gh = 270 
-sx = 1
-sy = 1
+sx = 2
+sy = 2
 
 function love.conf(t)
     t.identity = nil                   -- The name of the save directory (string)
@@ -10,8 +10,8 @@ function love.conf(t)
  
     t.window.title = "comps" -- The window title (string)
     t.window.icon = nil                -- Filepath to an image to use as the window's icon (string)
-    t.window.width = gw -- The window width (number)
-    t.window.height = gh -- The window height (number)
+    t.window.width = gw*sx -- The window width (number)
+    t.window.height = gh*sy -- The window height (number)
     t.window.borderless = false        -- Remove all border visuals from the window (boolean)
     t.window.resizable = true          -- Let the window be user-resizable (boolean)
     t.window.minwidth = 1              -- Minimum window width if the window is resizable (number)

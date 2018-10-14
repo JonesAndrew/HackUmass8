@@ -72,7 +72,7 @@ function Player:update(dt)
         self.vel_x = approach(self.vel_x, 0, dt * 240)
         self.vel_y = approach(self.vel_y, 0, dt * 240)
 
-        self.charge = math.max(math.min(self.charge + dt, 1), 0.4)
+        self.charge = math.max(math.min(self.charge + dt, 1), 0.2)
     elseif self.input:released('a') then
         if x == 0 and y == 0 then
             x = self.last_x
@@ -125,10 +125,9 @@ function Player:update(dt)
                             self.dash = false
                             break
                         else
-                            other.vel_x = self.vel_x
-                            other.vel_y = self.vel_y
+                            other.vel_x = self.vel_x / speed * (speed + 40)
+                            other.vel_y = self.vel_y / speed * (speed + 40)
                             other.stun = 0.25
-                            other.dash = true
                             self.vel_x = self.vel_x / 4
                             self.vel_y = self.vel_y / 4
                             self.dash = false
