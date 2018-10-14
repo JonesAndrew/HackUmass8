@@ -39,8 +39,6 @@ function love.load()
     resize(2)
   
     Director:start_with_scene(require "scenes/board"())
-  master
-
     main_canvas = love.graphics.newCanvas(gw, gh)
 end
 
