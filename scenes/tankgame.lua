@@ -7,7 +7,7 @@ local Tankgame = Scene:extend()
 
 function Tankgame:new()
     Scene.new(self)
-
+    play_sound("gameloop_clean.wav", "stream")
     self.lines = {0,200}
 
     local x = 0

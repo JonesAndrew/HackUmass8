@@ -8,6 +8,7 @@ local DontMiss = Scene:extend()
 
 function DontMiss:new()
     Scene.new(self)
+    play_sound("gameloop_clean.wav", "stream")
     self.players = {}
     self.radius = 200
     self.timer = 30

@@ -7,6 +7,7 @@ local Fortnite = Scene:extend()
 
 function Fortnite:new()
     Scene.new(self)
+    play_sound("gameloop_clean.wav", "stream")
     self.players = {}
     self.radius = 200
 
