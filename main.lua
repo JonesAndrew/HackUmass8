@@ -8,10 +8,18 @@ Director = require "scenes/director"
 Basic = require "scenes/basic_scene"
 
 local sounds ={}
+local music
 function play_sound(sound, setting)
     local s = sounds[sounds]
     if not s then
         s = love.audio.newSource(sound, setting or "static")
+        if setting == 'stream' then
+            if music then
+                music:stop()
+            end
+            music = s
+            music:setLooping(true)
+        end
         sounds[sound] = s
     end
     love.audio.play(s)
