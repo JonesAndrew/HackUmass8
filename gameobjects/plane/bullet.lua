@@ -13,8 +13,12 @@ end
 
 --bullet's only gotta move. if it collides, then it disappears
 function bullet:update(dt)
-	self.vel_y = 50	
+	self.vel_y = -50	
 	if self.collided then
 		return true
 	end
+	Gameobject.Gameobject.update(self, dt)
+	
 end
+
+return bullet

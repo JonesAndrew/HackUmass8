@@ -3,7 +3,9 @@ local Component = require "components/index"
 local baton = require "baton"
 local circle = require "components/circle"
 local shape = require "components/shape"
+local bullet = require "Gameobjects/plane/bullet"
 local Player = Gameobject.Gameobject:extend()
+local Explosion = require "Gameobjects/explosion"
 
 function Player:new(index)
     Gameobject.Gameobject.new(self)
@@ -23,8 +25,8 @@ function Player:new(index)
       joystick = love.joystick.getJoysticks()[index],
     }
 
-    self.health = 5
-    self.active = true
+    self.health = 50
+    self.dead = false
 	self.circle = self:add_component(Component.get('circle')(self, 5, 3))
 	self.bullet_count = 0
 
@@ -32,9 +34,9 @@ end
 
 --Calculates damage. Returns false when the pilot is destroyed
 function Player:damage(damage)
-	health = health - damage
-	if health <= 0 then
-		active = false
+	self.health = self.health - damage
+	if self.health <= 0 then
+		self.dead = true
 	end 
 end
 
@@ -42,35 +44,50 @@ function Player:shoot()
 	--[[Send out a bullet at a set velocity.
 		Any way to space time out between shots?
 	]]
-	local b = bullet:new(bullet_count)
+	b = bullet(self.bullet_count)
 	b.x = self.x
-	b.y = self.y + 2
-	bullet_count = bullet_count + 1
+	b.y = self.y - 20
+	self.bullet_count = self.bullet_count + 1
 
 	--Add to array of bullets the scene will look at
 	table.insert(Director.current.bullets, b)
+	Director.current:add_gameobject(b)
 end
 
 function Player:update(dt)
 	self.input:update()
 	
-	if self.active == false then
-		local o = Direcor.current:add_gameobject(Explosion())
+	if self.dead then
+		local o = Director.current:add_gameobject(Explosion())
 		o.x = self.x
 		o.y = self.y
-		return true
+		return true 
 	end
 
 	local x, y = self.input:get('move')
-	self.vel_x = x * 600
-	self.vel_y = y * 600
+	self.vel_x = x * 200
+	self.vel_y = y * 200
 
 	if self.input:pressed('shoot') then
-		Player:shoot()
+		self:shoot()
 		--shoot function
 	end--]]
 	-- movement handled by superclass
 	Gameobject.Gameobject.update(self, dt)
+
+	if self.x < 0 then
+		self.x = 0
+	end
+	if self.y < 0 then
+		self. y = 0
+	end
+
+	if self.x > gw then
+		self. x = gw
+	end
+	if self.y > gh then
+		self.y = gh
+	end
 end
 
 return Player

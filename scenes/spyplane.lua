@@ -42,15 +42,19 @@ function Spyplane:update(dt)
 	--add some speed lines, make them zoom.
 
 	--collision detection, damage
+
 	for i,v in ipairs(self.bullets) do
-		if dist(v.x, v.y, p1.x, p1.y) < 10 then
-			p1:damage()
+		print(dist(v.x, v.y, self.players[1].x, self.players[1].y))
+		if dist(v.x, v.y, self.players[1].x, self.players[1].y) < 5 and not self.players[1].dead then
+			self.players[1]:damage(1)
 			v.collided = true
-		elseif dist(v.x, v.y, p1.x, p2.y) < 10 then
-			p2:damage()
+		elseif dist(v.x, v.y, self.players[2].x, self.players[2].y) < 5 and not self.players[2].dead then
+			self.players[2]:damage(1)
 			v.collided = true
 		end
 	end
+
+
 end
 
 function Spyplane:render()
