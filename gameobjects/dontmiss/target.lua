@@ -65,11 +65,12 @@ function Target:update(dt)
 	self.vel_y = approach(self.vel_y, y * 60, dt * 500)
 	Gameobject.Gameobject.update(self, dt)
 	if (self.r1.shot) then
-		self.t1score = self:calcscore(self.r1.position)
+		self.t1score = self.t1score + self:calcscore(self.r1.position)
 		self.r1:reset()
-	elseif (self.r2.shot) then
-		self.t2score = self:calcscore(self.r2.position)
-		self.r1:reset()
+  end
+	if (self.r2.shot) then
+		self.t2score = self.t2score + self:calcscore(self.r2.position)
+		self.r2:reset()
 	end
 end
 	

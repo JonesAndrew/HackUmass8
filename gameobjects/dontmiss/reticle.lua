@@ -24,7 +24,7 @@ function Reticle:new(index)
       },
       joystick = love.joystick.getJoysticks()[index],
     }
-
+    self.index = index
     self.inner = self:add_component(Component.get('circle')(self, 6))
     self.outer = self:add_component(Component.get('circle')(self, 18))
     self.sway = self:add_component(Component.get('sway')(self, 4, 4, 3))
@@ -62,10 +62,10 @@ function Reticle:reset()
 	self.inner.style = "line"
 	self.inner.radius = 6
 	self.outer.radius = 18
-	self.x = 240 + (-1)^(index) * 20
+	self.x = 240 + ((-1)^(self.index) * 20)
 	self.y = 135
-	self.primed = false;
-	self.shot = false;
+	self.primed = false
+	self.shot = false
 end
 
 
