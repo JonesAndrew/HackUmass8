@@ -8,6 +8,7 @@ local Spyplane = Scene:extend()
 
 function Spyplane:new()
 	Scene.new(self)
+	play_sound("gameloop_clean.wav", "stream")
 	self.players = {}
 	self.bullets = {}
 
