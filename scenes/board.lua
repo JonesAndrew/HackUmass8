@@ -133,7 +133,7 @@ function Board:update(dt)
             while v == self.last_index do
                 v = love.math.random(#self.games)
             end
-            local info = self.games[love.math.random(v)]
+            local info = self.games[v]
             self.last_index = v
             Director:next_scene(require ("scenes/directions")(info[1], info[2], info[3], info[4], info[5]))
             return true
