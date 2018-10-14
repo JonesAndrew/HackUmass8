@@ -1,6 +1,7 @@
 local Scene = require "scenes/scene"
 local Gameobject = require "gameobjects/index"
 local Component = require "components/index"
+local Input = require "generic_input"
 
 local Board = Scene:extend()
 
@@ -51,6 +52,7 @@ end
 
 function Board:update(dt)
     Scene.update(self, dt)
+    Input.update()
 
     local fail = false
     for i=1,4 do
@@ -61,7 +63,7 @@ function Board:update(dt)
     end
 
     if not fail then
-        if love.keyboard.isDown("space") then
+        if Input.pressed("a") or Input.pressed("b") or Input.pressed("x") or Input.pressed("y") then
             Director.board = self
             Director:next_scene(require ("scenes/"..self.games[love.math.random(#self.games)])())
             return true
