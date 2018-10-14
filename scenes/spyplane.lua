@@ -90,6 +90,7 @@ function Spyplane:update(dt)
 			end
 
 			break
+		end
 
 		if dist(v.x, v.y, self.players[2].x, self.players[2].y) < 5 and not self.players[2].dead then
 			self.players[2]:damage(1)

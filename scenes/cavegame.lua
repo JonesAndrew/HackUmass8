@@ -127,7 +127,7 @@ end
 
 function Tankgame:render()
     love.graphics.push()
-    love.graphics.translate(-(self.players[self.index].x - (self.players[self.index].starting_x or 70)), 0)
+    love.graphics.translate(-(self.players[math.min(4, self.index)].x - (self.players[math.min(4, self.index)].starting_x or 70)), 0)
 
     love.graphics.setColor(colors[2])
     love.graphics.line(self.lines)
