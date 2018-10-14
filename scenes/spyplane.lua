@@ -49,6 +49,7 @@ end
 function Spyplane:update(dt)
 	Scene.update(self, dt)
 
+--Win conditions
 	if #self.players == 0 then
 		self.timerlabel.binding = nil
 		self.timerlabel.text = "Scummy Americans Win!"
@@ -68,7 +69,8 @@ function Spyplane:update(dt)
 	for i,v in ipairs(self.bullets) do
 
 		count = count + 1
-
+		
+--Collision detection
 		if dist(v.x, v.y, self.players[1].x, self.players[1].y) < 5 and not self.players[1].dead then
 			self.players[1]:damage(1)
 			v.collided = true
