@@ -86,11 +86,12 @@ function Spyplane:update(dt)
 			play_sound("sfxs/hit.wav")
 			if self.players[1].dead then
 				table.remove(Director.current.players, count)
+
 			end
 
 			break
 
-		elseif dist(v.x, v.y, self.players[2].x, self.players[2].y) < 5 and not self.players[2].dead then
+		if dist(v.x, v.y, self.players[2].x, self.players[2].y) < 5 and not self.players[2].dead then
 			self.players[2]:damage(1)
 			v.collided = true
 			table.remove(self.bullets, count)
