@@ -34,7 +34,6 @@ function Spyplane:new()
 	self:add_gameobject(p4)
 	p4.x = 300
 	p4.y = 200
---self.timerlabel.text = akldjfjhadkdkjfjds
 
 	self.timer = 30
 	self.timerlabel = Gameobject.get("basic")()
@@ -48,7 +47,7 @@ end
 
 function Spyplane:update(dt)
 	Scene.update(self, dt)
-
+--checking if someone's won. Americans win if soviets are dead
 	if #self.players == 0 then
 		self.timerlabel.binding = nil
 		self.timerlabel.text = "Scummy Americans Win!"
