@@ -32,16 +32,16 @@ function Shooter:new(index, target)
     self.shape = self:add_component(Component.get('circle')(self, 8, index + 2))
     self.shot_label = self:add_component(Component.get('label')(self, ''))
     self.shot_label.binding = function()
-        return tostring(self.shots)
+        return tostring(self.shots)..' Bullets'
     end
-    self.shot_label.offset_x = 20
+    self.shot_label.offset_x = 40
     self.shot_label.offset_y = -10
 end
 
 function Shooter:update(dt)
     self.input:update()
 
-    if self.input:pressed('a') and Director.current.time > 0 then
+    if self.input:pressed('a') and Director.current.time > 0 and self.shots > 0 then
         self.shots = math.max(self.shots - 1, 0)
 
         local dif_x = self.target.x - self.x

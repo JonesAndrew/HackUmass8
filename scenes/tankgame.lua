@@ -29,16 +29,40 @@ function Tankgame:new()
 
     local go = self:add_gameobject(Tank(1, 2))
     go.x = love.math.random(10, 80)
-    go.y = self:y_from_x(go.x) - 2
+    go.y = self:y_from_x(go.x) - 4
     self.tank1 = go
 
     local go2 = self:add_gameobject(Tank(3, 4))
     go2.x = love.math.random(400, 470)
-    go2.y = self:y_from_x(go2.x) - 2
+    go2.y = self:y_from_x(go2.x) - 4
     self.tank2 = go2
 
     go.target = go2
     go2.target = go
+
+    go = Gameobject.get("basic")()
+    go:add_component(Component.get('circle')(go, 8, 3))
+    self:add_gameobject(go)
+    go.x = 20
+    go.y = 245
+
+    go = Gameobject.get("basic")()
+    go:add_component(Component.get('circle')(go, 8, 4))
+    self:add_gameobject(go)
+    go.x = 40
+    go.y = 245
+
+    go = Gameobject.get("basic")()
+    go:add_component(Component.get('circle')(go, 8, 5))
+    self:add_gameobject(go)
+    go.x = 440
+    go.y = 245
+
+    go = Gameobject.get("basic")()
+    go:add_component(Component.get('circle')(go, 8, 6))
+    self:add_gameobject(go)
+    go.x = 460
+    go.y = 245
 
     self.win_count = 0
 end

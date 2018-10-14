@@ -32,10 +32,6 @@ function DontMiss:new()
     go3.x = 240
     go3.y = 135
 
-
-    
-    --self:add_gameobject(self.t1score)
-    --self:add_gameobject(self.t2score)
     self.timer = 30
     self.timerlabel = Gameobject.get("basic")()
     self.timerlabel:add_component(Component.get("label")(self.timerlabel, "q")).binding = function()

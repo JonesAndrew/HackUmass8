@@ -66,11 +66,18 @@ function Board:new()
     self.targets = {0, 0, 0, 0}
     self.games = {footrace, dontmiss, fortnite, tank, firesquad, cave}
 
+    local name = Gameobject.get("basic")()
+    name:add_component(Component.get("labeldisplay")(name, "Progress"))
+    self:add_gameobject(name)
+    name.x = 240
+    name.y = 10
+
     local go = Gameobject.get("basic")()
     go:add_component(Component.get('circle')(go, 8, 3))
     self:add_gameobject(go)
     go.x = 95
     go.y = 100
+    go.color = 3
     table.insert(self.piecies, go)
 
     go = Gameobject.get("basic")()
@@ -78,6 +85,7 @@ function Board:new()
     self:add_gameobject(go)
     go.x = 95
     go.y = 130
+    go.color = 3
     table.insert(self.piecies, go)
 
     go = Gameobject.get("basic")()
@@ -85,6 +93,7 @@ function Board:new()
     self:add_gameobject(go)
     go.x = 95
     go.y = 160
+    go.color = 3
     table.insert(self.piecies, go)
 
     go = Gameobject.get("basic")()
@@ -92,6 +101,7 @@ function Board:new()
     self:add_gameobject(go)
     go.x = 95
     go.y = 190
+    go.color = 3
     table.insert(self.piecies, go)
 end
 

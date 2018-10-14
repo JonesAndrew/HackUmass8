@@ -23,14 +23,14 @@ function Firesquad:new()
     go.y = 135 + 80
     table.insert(self.players, go)
 
-    go = Shooter(2, go)
+    go = Shooter(3, go)
     self:add_gameobject(go)
     go.color = 3
     go.x = 240 - 120
     go.y = 135 - 110
     table.insert(self.shooters, go)
 
-    go = Player(3)
+    go = Player(2)
     self:add_gameobject(go)
     go.color = 3
     go.x = 240 + 120
@@ -62,8 +62,8 @@ function Firesquad:update(dt)
         if (self.players[1].dead or self.players[2].dead or self.shooters[1].shots > 0 or self.shooters[2].shots > 0) then
             local win = {
                 [1] = not (self.players[1].dead or self.shooters[1].shots > 0),
-                [2] = not (self.players[1].dead or self.shooters[1].shots > 0),
-                [3] = not (self.players[2].dead or self.shooters[2].shots > 0),
+                [2] = not (self.players[2].dead or self.shooters[2].shots > 0),
+                [3] = not (self.players[1].dead or self.shooters[1].shots > 0),
                 [4] = not (self.players[2].dead or self.shooters[2].shots > 0),
             }
             Director.board:win(win)

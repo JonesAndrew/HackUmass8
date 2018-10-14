@@ -38,7 +38,7 @@ function Player:new(index, index2)
       joystick = love.joystick.getJoysticks()[index2],
     }
 
-    self.shape = self:add_component(Component.get('circle')(self, 8, index + 2))
+    self.shape = self:add_component(Component.get('shape')(self, 6))
 
     self.line_cool = 0
     self.color = 3
