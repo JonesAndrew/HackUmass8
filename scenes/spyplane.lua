@@ -8,8 +8,6 @@ local Spyplane = Scene:extend()
 
 function Spyplane:new()
 	Scene.new(self)
-
-	play_sound("gameloop_drums.wav","stream")
 	self.players = {}
 	self.bullets = {}
 
@@ -39,7 +37,8 @@ function Spyplane:new()
 
 	self.timer = 30
 	self.timerlabel = Gameobject.get("basic")()
-	self.timerlabel:add_component(Component.get("label")(self.timerlabel, "q")).binding = function()
+	self.labelComp = self.timerlabel:add_component(Component.get("label")(self.timerlabel, "q"))
+	self.labelComp.binding = function()
 		return self.timer <= 0 and 'Done' or tostring(math.ceil(self.timer))
 	end
 	self.timerlabel.x = 240
@@ -49,21 +48,28 @@ end
 
 function Spyplane:update(dt)
 	Scene.update(self, dt)
+	self.timer = self.timer - dt
 
 --Win conditions
 	if #self.players == 0 then
-		self.timerlabel.binding = nil
-		self.timerlabel.text = "Scummy Americans Win!"
-		play_sound("gameloop_badtape.wav", stream)
-		Director.board:win({[3]=true, [4]=true})
-		return true
+		self.timer = math.min(self.timer, 0)
+		self.labelComp.binding = nil
+		self.labelComp.text = "Scummy Americans Win!"
+		if self.timer <= -2 then
+			Director.board:win({[3]=true, [4]=true})
+			return true
+		end
+		return
 	end
 
-	if timer == 0 then
-		self.timerlabel.binding = nil
-		self.timerlabel.text = "Glory to Russia! Soviets Win!"
-		Director.board:win({[1]=true,[2]=true})
-		return true
+	if self.timer <= 0 then
+		self.labelComp.binding = nil
+		self.labelComp.text = "Glory to Russia! Soviets Win!"
+		if self.timer <= -2 then
+			Director.board:win({[1]=true,[2]=true})
+			return true
+		end
+		return
 	end
 
 	local count = 0
@@ -95,7 +101,6 @@ function Spyplane:update(dt)
 
 		end
 	end
-	self.timer = self.timer - dt
 end
 
 function Spyplane:render()
