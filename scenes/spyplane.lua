@@ -1,5 +1,6 @@
 local Scene = require "scenes/scene"
 local pilot = require "gameobjects/plane/pilot"
+local runner = require "gameobjects/plane/runner"
 local Gameobject = require "gameobjects/index"
 local Component = require "components/index"
 local explosion = require "gameobjects/explosion"
@@ -10,33 +11,30 @@ function Spyplane:new()
 	self.players = {}
 	self.bullets = {}
 
-	local p1 = pilot(1)
+	local p1 = runner(1)
 	self:add_gameobject(p1)
 	p1.color = 4
-	p1.x = 100
+	p1.x = 175
 	p1.y = 100
 	table.insert(self.players,p1)
 
-	local p2 = pilot(2)
+	local p2 = runner(2)
 	self:add_gameobject(p2)
 	p2.color = 4
-	p2.x = 200
+	p2.x = 300
 	p2.y = 100
 	table.insert(self.players, p2)
 
 	local p3 = pilot(3)
 	self:add_gameobject(p3)
-	p3.color = 2
-	p3.x = 100
+	p3.x = 175
 	p3.y = 200
-	table.insert(self.players, p3)
 
 	local p4 = pilot(4)
 	self:add_gameobject(p4)
-	p4.color = 2
-	p4.x = 200
+	p4.x = 300
 	p4.y = 200
-	table.insert(self.players, p4)
+--self.timerlabel.text = akldjfjhadkdkjfjds
 
 	self.timer = 30
 	self.timerlabel = Gameobject.get("basic")()
@@ -44,15 +42,29 @@ function Spyplane:new()
 		return self.timer <= 0 and 'Done' or tostring(math.ceil(self.timer))
 	end
 	self.timerlabel.x = 240
-	self.timerlabel.y = 50
+	self.timerlabel.y = 10
+	self:add_gameobject(self.timerlabel)
 end
 
 function Spyplane:update(dt)
 	Scene.update(self, dt)
-	--add some speed lines, make them zoom.
 
-	--collision detection, damage
+	if #self.players == 0 then
+		self.timerlabel.binding = nil
+		self.timerlabel.text = "Scummy Americans Win!"
+		Director.board:win({[3]=true, [4]=true})
+		return true
+	end
+
+	if timer == 0 then
+		self.timerlabel.binding = nil
+		self.timerlabel.text = "Glory to Russia! Soviets Win!"
+		Director.board:win({[1]=true,[2]=true})
+		return true
+	end
+
 	local count = 0
+
 	for i,v in ipairs(self.bullets) do
 
 		count = count + 1
@@ -62,6 +74,9 @@ function Spyplane:update(dt)
 			v.collided = true
 			table.remove(self.bullets, count)
 			play_sound("sfxs/hit.wav")
+			if self.players[1].dead then
+				table.remove(Director.current.players, count)
+			end
 
 			break
 
@@ -70,6 +85,9 @@ function Spyplane:update(dt)
 			v.collided = true
 			table.remove(self.bullets, count)
 			play_sound("sfxs/hit.wav")
+			if self.players[2].dead then
+				table.remove(Director.current.players, count)
+			end
 
 		end
 	end

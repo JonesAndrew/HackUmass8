@@ -27,17 +27,9 @@ function Player:new(index)
 
     self.health = 5
     self.dead = false
-	self.circle = self:add_component(Component.get('circle')(self, 5, 3))
+	self.circle = self:add_component(Component.get('circle')(self, 7, 3))
 	self.bullet_count = 0
 
-end
-
---Calculates damage. Returns false when the pilot is destroyed
-function Player:damage(damage)
-	self.health = self.health - damage
-	if self.health <= 0 then
-		self.dead = true
-	end 
 end
 
 function Player:shoot()
@@ -66,8 +58,8 @@ function Player:update(dt)
 	end
 
 	local x, y = self.input:get('move')
-	self.vel_x = x * 200
-	self.vel_y = y * 200
+	self.vel_x = x * 125
+	self.vel_y = y * 125
 
 	if self.input:pressed('shoot') then
 		self:shoot()
