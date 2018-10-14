@@ -10,6 +10,10 @@ Basic = require "scenes/basic_scene"
 local sounds ={}
 local music
 function play_sound(sound, setting)
+    if setting == "stream" and sound ~= "soviet-anthem.mp3" then
+        return
+    end
+
     local s = sounds[sounds]
     if not s then
         s = love.audio.newSource(sound, setting or "static")

@@ -4,7 +4,7 @@ local baton = require "baton"
 
 local Explosion = Gameobject.Gameobject:extend()
 
-function Explosion:new(maxsize, len)
+function Explosion:new(maxsize, len, no_freeze)
     Gameobject.Gameobject.new(self)
     self.shape = self:add_component(Component.get('circle')(self, 2))
     self.shape.style = 'fill'
@@ -13,13 +13,14 @@ function Explosion:new(maxsize, len)
     self.color = 4
     self.maxsize = maxsize or 32
     self.count = 0
+    self.no_freeze = no_freeze
 end
 
 function Explosion:update(dt)
     Gameobject.Gameobject.update(self, dt)
     self.count_down = self.count_down - dt
 
-    if (self.count == 1) then
+    if (self.count == 1 and not self.no_freeze) then
         love.timer.sleep(0.05)
     end
     self.count = self.count + 1

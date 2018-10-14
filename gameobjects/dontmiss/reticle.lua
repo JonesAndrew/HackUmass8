@@ -31,7 +31,7 @@ function Reticle:new(index)
     self.primed = false
     self.timer = 2.50
     self.shot = false
-    self.position = {}
+    self.position = nil
 end
 
 
@@ -51,9 +51,11 @@ function Reticle:fire(x)
 	self.inner.style = "fill"
 	self.inner.radius = math.floor(self.timer/2.50 * self.inner.radius)
 	self.outer.radius = math.floor(self.timer/2.50 * self.outer.radius)
-	if (self.timer <= 2) then 
+	if (self.timer <= 2 and not self.position) then 
 		self.shot = true --shooters gonna shoot
 		self.position = {self.x, self.y}
+    elseif self.timer <= 0 then
+        self:reset()
 	end
 end
 
@@ -66,6 +68,7 @@ function Reticle:reset()
 	self.y = 135
 	self.primed = false
 	self.shot = false
+    self.position = nil
 end
 
 

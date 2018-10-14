@@ -3,6 +3,7 @@ local Component = require "components/index"
 local baton = require "baton"
 
 local Target = Gameobject.Gameobject:extend()
+local Explosion = require "gameobjects/explosion"
 Gameobject.add("target", Target)
 
 function Target:new(index1, index2, reticle1, reticle2)
@@ -66,11 +67,19 @@ function Target:update(dt)
 	Gameobject.Gameobject.update(self, dt)
 	if (self.r1.shot) then
 		self.t1score = self.t1score + self:calcscore(self.r1.position)
-		self.r1:reset()
+    self.r1.shot = false
+
+    local o = Director.current:add_gameobject(Explosion(8, 0.1, true))
+    o.x = self.r1.position[1]
+    o.y = self.r1.position[2]
   end
 	if (self.r2.shot) then
 		self.t2score = self.t2score + self:calcscore(self.r2.position)
-		self.r2:reset()
+    self.r2.shot = false
+
+    local o = Director.current:add_gameobject(Explosion(8, 0.1, true))
+    o.x = self.r2.position[1]
+    o.y = self.r2.position[2]
 	end
 end
 	
