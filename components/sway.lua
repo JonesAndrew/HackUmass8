@@ -3,11 +3,13 @@ local Component = require "components/index"
 local Sway = Component.Component:extend()
 Component.add("sway", Sway)
 
-function Sway:new(gameobject, w)
+function Sway:new(gameobject, w, rx, ry)
     Component.Component.new(self, gameobject)
 
-    self.destination = {math.abs((gameobject.x + love.math.random(-48,48))) % 480, 
-    math.abs(gameobject.y + love.math.random(-27,27)) % 270}
+    self.radx = 12 * rx
+    self.rady = 9 * ry
+    self.destination = {math.abs((gameobject.x + love.math.random(-self.radx,self.radx))) % 480, 
+    math.abs(gameobject.y + love.math.random(-self.rady,self.rady)) % 270}
     self.timer = 0
     self.weight = w
 end
@@ -18,9 +20,8 @@ end
 
 function Sway:update(dt)
 	if (self:checkpoints({self.gameobject.x, self.gameobject.y}, self.destination) or (self.timer >= 1.5)) then
-		--self.destination = self.destination + 5
-		local x = self.gameobject.x + love.math.random(-48,48)
-		local y = self.gameobject.y + love.math.random(-27,27)
+		local x = self.gameobject.x + love.math.random(-self.radx,self.radx)
+		local y = self.gameobject.y + love.math.random(-self.rady,self.rady)
 		x = math.abs(x) % 480
 		y = math.abs(y) % 270
 		self.destination = {x, y}

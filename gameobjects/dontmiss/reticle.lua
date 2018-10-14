@@ -24,13 +24,17 @@ function Reticle:new(index)
       },
       joystick = love.joystick.getJoysticks()[index],
     }
-
+    self.index = index
     self.inner = self:add_component(Component.get('circle')(self, 6))
     self.outer = self:add_component(Component.get('circle')(self, 18))
-    self.sway = self:add_component(Component.get('sway')(self, 4))
+    self.sway = self:add_component(Component.get('sway')(self, 4, 4, 3))
     self.primed = false
     self.timer = 2.50
+    self.shot = false
+    self.position = {}
 end
+
+
 function Reticle:update(dt)
 	self.input:update()
 	local x, y = self.input:get('move')
@@ -42,11 +46,28 @@ function Reticle:update(dt)
 end
 
 
-
 function Reticle:fire(x) 
 	self.timer = self.timer - x
 	self.inner.style = "fill"
 	self.inner.radius = math.floor(self.timer/2.50 * self.inner.radius)
 	self.outer.radius = math.floor(self.timer/2.50 * self.outer.radius)
+	if (self.timer <= 0) then 
+		self.shot = true --shooters gonna shoot
+		self.position = {self.x, self.y}
+	end
 end
+
+function Reticle:reset() 
+	self.timer = 2.50
+	self.inner.style = "line"
+	self.inner.radius = 6
+	self.outer.radius = 18
+	self.x = 240 + ((-1)^(self.index) * 20)
+	self.y = 135
+	self.primed = false
+	self.shot = false
+end
+
+
+
 return Reticle
