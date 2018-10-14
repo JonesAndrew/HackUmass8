@@ -8,6 +8,7 @@ local Firesquad = Scene:extend()
 
 function Firesquad:new()
     Scene.new(self)
+    play_sound("gameloop_clean.wav", "stream")
     self.players = {}
     self.shooters = {}
     self.bullets = {}

@@ -7,6 +7,7 @@ local Footrace = Scene:extend()
 
 function Footrace:new()
     Scene.new(self)
+    play_sound("gameloop_clean.wav", "stream")
     self.players = {}
 
     self.countdown = love.math.random() + 2.5
