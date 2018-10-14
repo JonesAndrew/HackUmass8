@@ -49,8 +49,10 @@ function Player:update(dt)
 
     if button == Director.current.button then
         self.vel_x = 55
+        play_sound("sfxs/squish.wav")
     elseif button ~= nil then
         self.vel_x = -30
+        play_sound("sfxs/bad_squish.wav")
     end
 
     local delta = 360 * dt

@@ -7,6 +7,16 @@ require.tree("gameobjects")
 Director = require "scenes/director"
 Basic = require "scenes/basic_scene"
 
+local sounds ={}
+function play_sound(sound)
+    local s = sounds[sounds]
+    if not s then
+        s = love.audio.newSource(sound, "static")
+        sounds[sound] = s
+    end
+    love.audio.play(s)
+end
+
 function approach(current, target, delta)
     return math.max(math.min(current + delta, target), current-delta)
 end

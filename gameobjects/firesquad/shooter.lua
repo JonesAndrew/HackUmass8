@@ -54,6 +54,7 @@ function Shooter:update(dt)
         local count = love.math.random(3, 8)
 
         for i=1,count do
+            play_sound("sfxs/dash.wav")
             local bullet = Director.current:add_gameobject(Bullet())
             bullet.x = self.x
             bullet.y = self.y

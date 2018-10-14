@@ -86,6 +86,8 @@ function Player:update(dt)
         self.vel_y = (self.charge) * 320 * y
         self.dash = true
         self.charge = 0
+
+        play_sound("sfxs/dash.wav")
     else
         self.vel_x = approach(self.vel_x, x * 60, dt * 360)
         self.vel_y = approach(self.vel_y, y * 60, dt * 360)
@@ -111,6 +113,7 @@ function Player:update(dt)
                         local o = Director.current:add_gameobject(Explosion(8, 0.1))
                         o.x = (self.x + other.x)/2
                         o.y = (self.y + other.y)/2
+                        play_sound("sfxs/hit.wav")
                         if other.dash then
                             local temp_x = other.vel_x
                             local temp_y = other.vel_y
@@ -142,6 +145,7 @@ function Player:update(dt)
     if dist(self.x, self.y, 240, 135) > Director.current.radius then
         self.dead = true
         Director:shake(2.5)
+        play_sound("sfxs/explode.wav")
         local o = Director.current:add_gameobject(Explosion())
         o.x = self.x
         o.y = self.y

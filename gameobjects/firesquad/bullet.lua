@@ -20,6 +20,7 @@ function Bullet:update(dt)
     if not self.target.dead and dist(self.target.x, self.target.y, self.x, self.y) < 8 then
         self.target.dead = true
         Director:shake(2.5)
+        play_sound("sfxs/explode.wav")
         local o = Director.current:add_gameobject(Explosion(32, 0.5))
         o.x = self.target.x
         o.y = self.target.y

@@ -73,6 +73,7 @@ function Player:update(dt)
         bullet.vel_x = math.cos(self.angle) * 400 * dir * self.charge
         bullet.vel_y = math.sin(self.angle) * 400 * self.charge
         bullet.target = self.target
+        play_sound("sfxs/tank_shoot.wav")
 
         self.cooldown = 2
         self.charge = 0.2
