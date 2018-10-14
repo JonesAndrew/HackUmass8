@@ -8,6 +8,8 @@ local Spyplane = Scene:extend()
 
 function Spyplane:new()
 	Scene.new(self)
+
+	play_sound("gameloop_drums.wav","stream")
 	self.players = {}
 	self.bullets = {}
 
@@ -52,6 +54,7 @@ function Spyplane:update(dt)
 	if #self.players == 0 then
 		self.timerlabel.binding = nil
 		self.timerlabel.text = "Scummy Americans Win!"
+		play_sound("gameloop_badtape.wav", stream)
 		Director.board:win({[3]=true, [4]=true})
 		return true
 	end
