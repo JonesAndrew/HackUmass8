@@ -29,6 +29,10 @@ function Player:new(index)
 end
 
 function Player:update(dt)
+    if self.stop then
+        return
+    end
+
     self.input:update()
     self.line_cool = self.line_cool - dt
 
@@ -44,9 +48,11 @@ function Player:update(dt)
     end
 
     if button == Director.current.button then
-        self.vel_x = 40
+        self.vel_x = 55
+        play_sound("sfxs/squish.wav")
     elseif button ~= nil then
         self.vel_x = -30
+        play_sound("sfxs/bad_squish.wav")
     end
 
     local delta = 360 * dt

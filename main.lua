@@ -7,6 +7,16 @@ require.tree("gameobjects")
 Director = require "scenes/director"
 Basic = require "scenes/basic_scene"
 
+local sounds ={}
+function play_sound(sound)
+    local s = sounds[sounds]
+    if not s then
+        s = love.audio.newSource(sound, "static")
+        sounds[sound] = s
+    end
+    love.audio.play(s)
+end
+
 function approach(current, target, delta)
     return math.max(math.min(current + delta, target), current-delta)
 end
@@ -27,8 +37,9 @@ function love.load()
     love.graphics.setLineStyle('rough')
 
     resize(2)
-
-    Director:start_with_scene(require "scenes/spyplane"())
+  
+    Director:start_with_scene(require "scenes/board"())
+  master
 
     main_canvas = love.graphics.newCanvas(gw, gh)
 end

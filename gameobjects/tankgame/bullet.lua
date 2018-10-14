@@ -15,9 +15,11 @@ function Bullet:new()
 end
 
 function Bullet:update(dt)
+    self.vel_y = self.vel_y + 100 * dt
+
     Gameobject.Gameobject.update(self, dt)
 
-    if not self.target.dead and dist(self.target.x, self.target.y, self.x, self.y) < 8 then
+    if not self.target.dead and dist(self.target.x, self.target.y, self.x, self.y) < 20 then
         self.target.dead = true
         Director:shake(2.5)
         play_sound("sfxs/explode.wav")
@@ -27,7 +29,17 @@ function Bullet:update(dt)
         return true
     end
 
-    return math.abs(self.x - 240) < 3 or self.y > 290
+    local y = Director.current:y_from_x(self.x)
+    if self.y >= y then
+        Director:shake(1.5)
+        play_sound("sfxs/hit.wav")
+        local o = Director.current:add_gameobject(Explosion(8, 0.1))
+        o.x = self.x
+        o.y = y
+        self.dead = true
+
+        return true
+    end
 end
 
 return Bullet
