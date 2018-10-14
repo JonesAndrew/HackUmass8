@@ -32,8 +32,8 @@ function DontMiss:new()
 
 
     self:add_gameobject(self.timer)
-    self:add_gameobject(go3.t1score)
-    self:add_gameobject(go3.t2score)
+    self:add_gameobject(self.t1score)
+    self:add_gameobject(self.t2score)
 
     self.timer = Gameobject.get("basic")()
     self.timer:add_component(Component.get("label")(self.timer, "q")).binding = function()
@@ -44,7 +44,7 @@ function DontMiss:new()
 
     self.team1 = Gameobject.get("basic")()
     self.team1:add_component(Component.get("label")(self.team1, "q")).binding = function()
-        return ("Team 1 Score: " .. tostring(go3.t1score))
+        return ("Team 1 Score: " .. tostring(self.t1score))
     end
 
     self:add_gameobject(self.team1)
@@ -52,7 +52,7 @@ function DontMiss:new()
 
     self.team2 = Gameobject.get("basic")()
     self.team2:add_component(Component.get("label")(self.team2, "q")).binding = function()
-        return ("Team 1 Score: " .. tostring(go3.t2score))
+        return ("Team 1 Score: " .. tostring(self.t2score))
     end
 
     self:add_gameobject(self.team2)
@@ -63,6 +63,8 @@ end
 function DontMiss:update(dt)
     Scene.update(self, dt)
     self.timer = self.timer - dt
+    self.t1score = go3.t1score
+    self.t2score = go3.t2score
 end
 
 function DontMiss:render()
