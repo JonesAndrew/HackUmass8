@@ -52,6 +52,10 @@ function Player:new(index)
 end
 
 function Player:update(dt)
+    if self.stop then
+        return
+    end
+
     self.input:update()
     self.line_cool = self.line_cool - dt
     self.stun = self.stun - dt

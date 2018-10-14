@@ -76,16 +76,17 @@ function Footrace:update(dt)
         self.countdown = 10
         self.button_label:updateText("Winner")
         if self.win_timer > 3 then
-            Director.board:win(winner)
+            Director.board:win({[winner]=true})
             return true
         end
     end
 end
 
 function Footrace:render()
-    love.graphics.line(460, 40, 460, 230)
-
     Scene.render(self)
+
+    love.graphics.setColor(colors[3])
+    love.graphics.line(460, 60, 460, 250)
 end
 
 return Footrace

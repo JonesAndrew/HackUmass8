@@ -59,7 +59,14 @@ function Firesquad:update(dt)
     self.time = self.time - dt
     if self.time < -3 then
         if (self.players[1].dead or self.players[2].dead or self.shooters[1].shots > 0 or self.shooters[2].shots > 0) then
-            return
+            local win = {
+                [1] = not (self.players[1].dead or self.shooters[1].shots > 0),
+                [2] = not (self.players[1].dead or self.shooters[1].shots > 0),
+                [3] = not (self.players[2].dead or self.shooters[2].shots > 0),
+                [4] = not (self.players[2].dead or self.shooters[2].shots > 0),
+            }
+            Director.board:win(win)
+            return true
         end
 
         self.round = self.round + 1

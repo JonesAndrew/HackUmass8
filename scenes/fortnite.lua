@@ -37,10 +37,33 @@ function Fortnite:new()
     go.x = 240 + 70
     go.y = 135 + 70
     table.insert(self.players, go)
+
+    self.win_timer = 0
 end
 
 function Fortnite:update(dt)
     Scene.update(self, dt)
+
+    local count = 0
+    local winner = 0
+    for i=1,4 do
+        if not self.players[i].dead then
+            winner = i
+            count = count + 1
+        end
+    end
+
+    if count == 1 then
+        self.players[winner].stop = true
+        self.win_timer = self.win_timer + dt
+        if self.win_timer > 2 then
+            print(winner)
+            Director.board:win({[winner]=true})
+            return true
+        end
+        return
+    end
+
     self.radius = self.radius - dt * 1.5
 end
 

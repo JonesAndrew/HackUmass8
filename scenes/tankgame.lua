@@ -30,13 +30,17 @@ function Tankgame:new()
     local go = self:add_gameobject(Tank(1, 2))
     go.x = love.math.random(10, 80)
     go.y = self:y_from_x(go.x) - 2
+    self.tank1 = go
 
     local go2 = self:add_gameobject(Tank(3, 4))
     go2.x = love.math.random(400, 470)
     go2.y = self:y_from_x(go2.x) - 2
+    self.tank2 = go2
 
     go.target = go2
     go2.target = go
+
+    self.win_count = 0
 end
 
 function Tankgame:y_from_x(x)
@@ -70,6 +74,20 @@ function Tankgame:y_from_x(x)
 end
 
 function Tankgame:update(dt)
+    if self.tank1.dead or self.tank2.dead then
+        self.win_count = self.win_count + dt
+        if self.win_count > 2 then
+            local winner = {
+                [1]=not self.tank1.dead,
+                [2]=not self.tank1.dead,
+                [3]=not self.tank2.dead,
+                [4]=not self.tank2.dead,
+            }
+            Director.board:win(winner)
+            return true
+        end
+    end
+
     Scene.update(self, dt)
 end
 

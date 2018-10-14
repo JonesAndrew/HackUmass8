@@ -8,7 +8,7 @@ function Board:new()
     Scene.new(self)
     self.piecies = {}
     self.targets = {0, 0, 0, 0}
-    self.games = {'footrace'}
+    self.games = {'footrace','firesquad','fortnite','tankgame'}
 
     local go = Gameobject.get("basic")()
     go:add_component(Component.get('circle')(go, 8, 3))
@@ -41,7 +41,7 @@ end
 
 function Board:win(winner)
     for i=1,4 do
-        if i == winner then
+        if winner[i] then
             self.targets[i] = self.targets[i] + 3
         else
             self.targets[i] = self.targets[i] + 1
