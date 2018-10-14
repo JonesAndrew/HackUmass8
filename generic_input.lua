@@ -13,7 +13,7 @@ for i=1,4 do
       x = {'key:x', 'button:x'},
       y = {'key:y', 'button:y'},
     },
-    joystick = love.joystick.getJoysticks()[index],
+    joystick = love.joystick.getJoysticks()[i],
   }
 end
 
