@@ -53,6 +53,13 @@ local cave = {
     'cavegame'
 }
 
+local valkyrie = {
+    "Flight of the Valkyries",
+    "Escape is the most important part of an agent's mission!",
+    "In this exercise, you are pairs of pilots. One pair of pilots, in smaller planes, must escape their pursuers for 30 seconds. The pursuers must eliminate the targets within the time limit. But beware! The pursuers are armed with cannons!",
+    "Use the control stick to steer the plane! Pursuers, use A to fire your cannon!",
+    'spyplane'
+}
 function Board:new()
     Scene.new(self)
     self.piecies = {}
