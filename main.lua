@@ -37,7 +37,7 @@ function love.load()
     love.graphics.setLineStyle('rough')
 
     -- resize(2)
-    Director:start_with_scene(require "scenes/winscreen"({}))
+    Director:start_with_scene(require "scenes/board"())
 
     main_canvas = love.graphics.newCanvas(gw, gh)
 end

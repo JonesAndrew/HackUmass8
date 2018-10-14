@@ -56,7 +56,7 @@ local cave = {
 function Board:new()
     Scene.new(self)
     self.piecies = {}
-    self.targets = {9, 0, 0, 0}
+    self.targets = {0, 0, 0, 0}
     self.games = {footrace, dontmiss, fortnite, tank, firesquad, cave}
 
     local go = Gameobject.get("basic")()

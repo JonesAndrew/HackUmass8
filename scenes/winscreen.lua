@@ -11,19 +11,16 @@ function WinScreen:new(winners)
     local name = Gameobject.get("basic")()
     name:add_component(Component.get("labeldisplay")(name, "Winners"))
     self:add_gameobject(name)
-    print(#self.gameobjects)
     name.x = 240
     name.y = 10
     name.colors = 3
 
     local go = Gameobject.get("basic")()
-    self.comp = go:add_component(Component.get('circle')(go, 8, 4))
-    -- go:add_component(Component.get("labeldisplay")(go, "Winners"))
-    -- if winners[1] then
+    self.comp = go:add_component(Component.get('circle')(go, 8, 3))
+    if winners[1] then
         self:add_gameobject(go)
-    print(#self.gameobjects)
-    -- end
-    go.x = 240
+    end
+    go.x = 240 - 60
     go.y = 100
     go.color = 3
     self.final = go
