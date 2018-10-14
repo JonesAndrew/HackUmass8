@@ -75,7 +75,7 @@ function Target:update(dt)
 end
 	
 function Target:calcscore(pos)
-	dist = ((pos[1] - self.x)^2 + (pos[2] - self.y)^2)^0.5
+	local dist = ((pos[1] - self.x)^2 + (pos[2] - self.y)^2)^0.5
 	if (dist <= 12) then
 		return 3
 	elseif (dist <= 36) then 
