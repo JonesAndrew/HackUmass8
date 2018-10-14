@@ -21,7 +21,7 @@ function WinScreen:new(winners)
         self:add_gameobject(go)
     end
     go.x = 240 - 60
-    go.y = 100
+    go.y = 135
     go.color = 3
     self.final = go
 
