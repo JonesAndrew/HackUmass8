@@ -51,7 +51,7 @@ function Reticle:fire(x)
 	self.inner.style = "fill"
 	self.inner.radius = math.floor(self.timer/2.50 * self.inner.radius)
 	self.outer.radius = math.floor(self.timer/2.50 * self.outer.radius)
-	if (self.timer <= 0) then 
+	if (self.timer <= 2) then 
 		self.shot = true --shooters gonna shoot
 		self.position = {self.x, self.y}
 	end
