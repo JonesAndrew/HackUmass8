@@ -25,7 +25,7 @@ function Player:new(index)
       joystick = love.joystick.getJoysticks()[index],
     }
 
-    self.health = 50
+    self.health = 5
     self.dead = false
 	self.circle = self:add_component(Component.get('circle')(self, 5, 3))
 	self.bullet_count = 0
@@ -58,6 +58,7 @@ function Player:update(dt)
 	self.input:update()
 	
 	if self.dead then
+		play_sound("sfxs/explode.wav")
 		local o = Director.current:add_gameobject(Explosion())
 		o.x = self.x
 		o.y = self.y
