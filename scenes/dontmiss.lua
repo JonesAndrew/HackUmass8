@@ -12,7 +12,8 @@ function DontMiss:new()
     self.players = {}
     self.radius = 200
     self.timer = 30
-
+    self.t1score = 0
+    self.t2score = 0
     local go1 = Reticle(1)
     self:add_gameobject(go1)
     go1.color = 3
@@ -39,12 +40,13 @@ function DontMiss:new()
     self.timerlabel = Gameobject.get("basic")()
     self.timerlabel:add_component(Component.get("label")(self.timerlabel, "q")).binding = function()
         return self.timer <= 0 and 'Done' or tostring(math.ceil(self.timer))
-    end
+        end
     self:add_gameobject(self.timerlabel)
     self.timerlabel.x = 240
 
     self.team1 = Gameobject.get("basic")()
     self.team1:add_component(Component.get("label")(self.team1, "q")).binding = function()
+        self.t1score = go3.t1score
         return ("Team 1 Score: " .. tostring(go3.t1score))
     end
 
@@ -53,6 +55,7 @@ function DontMiss:new()
 
     self.team2 = Gameobject.get("basic")()
     self.team2:add_component(Component.get("label")(self.team2, "q")).binding = function()
+        self.t2score = go3.t2score
         return ("Team 2 Score: " .. tostring(go3.t2score))
     end
 
@@ -64,6 +67,16 @@ end
 function DontMiss:update(dt)
     Scene.update(self, dt)
     self.timer = self.timer - dt
+    if self.timer <= 0 then
+        if self.t1score >= self.t2score then
+            Director.board:win({[1]=true,[2]=true})
+            return true
+        else
+            Director.board:win({[3]=true,[4]=true})
+            return true
+        end
+        return
+    end
 end
 
 function DontMiss:render()
